@@ -1,6 +1,14 @@
-name,size
-Livo,4
-Avio,5
-Modo,10
-Hevo,6
-Islando,4
+name,islandWidth,islandHeight
+Livo,10,4
+Avio,5, 10
+Modo,10, 10
+Hevo,6, 7
+Islando,4, 5
+Memsis,4, 7
+Getto,5,4
+Trate,10,10
+Gismo,6,12
+Trempel,4,7
+Zukko,4,9
+Tazman,4,9
+Upertote,4, 10

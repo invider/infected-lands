@@ -20,10 +20,23 @@ Game.prototype.getIslandByIndex = function(index){
 
 Game.prototype.spawn = function() {
     sys.spawn('Player', {}, 'game')
-}
+};
+
+Game.prototype.genIslandParams = function(){
+    for (let i = 0; i < 10000; i++){
+
+        const params = lib.arrayTools.randomElement(res.islands);
+        if (this.islandMap.find(o => o.params === params) === undefined){
+            return params;
+        }
+    }
+    throw new Exception("Error, cannot find params");
+};
 
 Game.prototype.generateIsland = function () {
-    let island = new dna.Island();
+    let params = this.genIslandParams()
+    let island = new dna.Island(params);
+    island.params = params;
     console.log("Generating island..");
     this.islandMap.push(island);
 };

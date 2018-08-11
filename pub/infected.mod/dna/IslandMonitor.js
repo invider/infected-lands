@@ -8,13 +8,18 @@ var IslandMonitor = function(init){
 
 
 IslandMonitor.prototype.draw = function(){
+    var island = lab.game.getIslandByIndex(this.currentIsland)
     ctx.beginPath();
     ctx.strokeStyle = '#00FF10';
     ctx.rect(this.x, this.y, this.width, this.height);
     ctx.stroke();
-    var island = lab.game.getIslandByIndex(this.currentIsland)
+
+    ctx.font = "30px Arial";
+    ctx.fillText(`Island: ${island.params.name} (${island.params.islandWidth}X${island.params.islandHeight})`,0,0);
+
+
     island.x = this.x;
-    island.y = this.y;
+    island.y = this.y + 40;
     island.draw()
 };
 
