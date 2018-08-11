@@ -1,6 +1,7 @@
 module.exports = function() {
     log.out('setting up')
 
+    /*
     sys.spawn('SlideCamera', {
         name: 'camera',
         x: 0,
@@ -15,6 +16,7 @@ module.exports = function() {
         else if (this.keys[2]) this.x += (this.speed/this.scale) * dt
         else if (this.keys[3]) this.y += (this.speed/this.scale) * dt
     })
+    */
 
     // sys.spawn('Tiles', {
     //     x: 0,
@@ -43,7 +45,7 @@ module.exports = function() {
         top: 1000,
         step: 100,
         coordinates: false,
-    }, 'camera')
+    }, '')
 
     //
     // sys.spawn('Island', {
@@ -64,14 +66,14 @@ module.exports = function() {
         y: 0,
         width: 600,
         height:400
-    }, 'camera');
+    }, '');
     sys.spawn('monitors/MyIslandMonitor', {
         //Z: 1000,
         x: 0,
         y: 450,
         width: 600,
         height:400
-    }, 'camera');
+    }, '');
 
 
     // show the story
