@@ -61,6 +61,7 @@ module.exports = function() {
     });
 
     sys.spawn('monitors/EnemyIslandMonitor', {
+        name: 'targetIsland',
         //Z: 1000,
         x: 0,
         y: 0,
@@ -68,6 +69,7 @@ module.exports = function() {
         height:400
     }, '');
     sys.spawn('monitors/MyIslandMonitor', {
+        name: 'myIsland',
         //Z: 1000,
         x: 0,
         y: 450,
