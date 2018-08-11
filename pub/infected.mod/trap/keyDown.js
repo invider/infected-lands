@@ -1,5 +1,4 @@
 module.exports = function(e) {
-    console.log(e.code)
     if (!e.repeat) {
         switch(e.code) {
         /*
@@ -13,10 +12,8 @@ module.exports = function(e) {
         case 'KeyD': lab.camera.keys[2] = true; break;
         case 'KeyS': lab.camera.keys[3] = true; break;
         */
-
         case 'Comma': case 'KeyQ': lab.targetIsland.prevIsland(); break;
         case 'Period': case 'KeyE': lab.targetIsland.nextIsland(); break;
-
         case 'Enter': lab.game.nextTurn(); break;
         }
     }
