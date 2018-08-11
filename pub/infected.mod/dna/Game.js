@@ -6,13 +6,16 @@ var Game = function(init){
     this.dt = 0;
     this.islandMap = [];
     this.islands = env.tuning.islands;
-
     for (let i = 0; i < this.islands; i++){
         this.generateIsland()
     }
 
     // setup env
     env.turn = 1
+};
+Game.prototype.getIslandByIndex = function(index){
+    asserts.true(this.islandMap[index], `No island with index: ${index}`);
+    return this.islandMap[index];
 };
 
 Game.prototype.spawn = function() {
