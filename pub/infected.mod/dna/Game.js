@@ -41,20 +41,27 @@ Game.prototype.getIslandsMaxSizes = function(){
 
 
 Game.prototype.spawn = function() {
+
+    let team = 0
+    let island = 0
+
     // spawn human players
     let humans = env.tuning.players - env.tuning.computers
-
     for (let i = 0; i < humans; i++) {
         sys.spawn('Team', {
+            id: team++,
             name: 'Player ' + (i+1),
             computer: false,
+            startIsland: island++,
         }, this.teams)
     }
 
     for (let i = 0; i < env.tuning.computers; i++) {
         sys.spawn('Team', {
+            id: team++,
             name: 'Computer ' + (i+1),
             computer: true,
+            startIsland: island++,
         }, this.teams)
     }
 };
@@ -75,6 +82,7 @@ Game.prototype.generateIsland = function () {
     let island = new dna.Island(params);
     island.params = params;
     console.log("Generating island..");
+    island.id = this.islandMap.length
     this.islandMap.push(island);
 };
 

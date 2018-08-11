@@ -34,12 +34,13 @@ IslandsList.prototype.draw = function(){
         var island = lab.game.getIslandByIndex(i);
         var islandSizes = island.getScreenWidth();
         var offset = lib.geometry.getOffsetToCenterInner(this.islandSize, this.islandSize, islandSizes.x * this.scale, islandSizes.y * this.scale);
-        ctx.save();
 
+        ctx.save();
         ctx.translate(this.x + currentX + offset.x, this.y + currentY + offset.y);
         ctx.scale(this.scale, this.scale);
         island.draw();
         ctx.restore();
+
         if (i == lab.targetIsland.currentIsland){
             this.drawSelector(this.x + currentX, this.y + currentY);
         }
