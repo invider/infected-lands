@@ -42,7 +42,7 @@ module.exports = function() {
         color: '#ff7080',
         top: 1000,
         step: 100,
-        coordinates: true,
+        coordinates: false,
     }, 'camera')
 
     //
@@ -77,16 +77,16 @@ module.exports = function() {
     // show the story
     sys.spawn('text/scroll', {
         Z: 100,
-        rx: 50,
+        rx: 10,
         ry: 90,
-        period: 2.5,
-        time: 25,       // how long display each line
-        fadein: 2.5,
-        fadeout: 5,
-        speed: -25,
-        txt: env.story,
-        font: '24px Zekton',
-        color: '#60FF20',
+        period: 1.5,
+        time: 5,       // how long display each line
+        fadein: 1.5,
+        fadeout: 2,
+        speed: -30,
+        txt: res.story,
+        font: '20px Zekton',
+        color: '#FFFF20',
     })
 
 }

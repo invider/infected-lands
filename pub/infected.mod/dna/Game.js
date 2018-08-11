@@ -29,6 +29,7 @@ Game.prototype.generateIsland = function () {
 };
 
 Game.prototype.nextTurn = function() {
+    env.turn++
     log.out('turn #' + env.turn)
 }
 

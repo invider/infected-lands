@@ -9,5 +9,7 @@ module.exports = function(e) {
     case 'KeyW': lab.camera.keys[1] = true; break;
     case 'KeyD': lab.camera.keys[2] = true; break;
     case 'KeyS': lab.camera.keys[3] = true; break;
+
+    case 'Enter': lab.game.nextTurn(); break;
     }
 }
