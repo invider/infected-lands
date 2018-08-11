@@ -21,6 +21,11 @@ module.exports = {
         return list.length
     },
 
+    // select from arbitrary object
+    select: function(target, path) {
+        // TODO select from any object recursively
+    },
+
     attach: function(target, element) {
         if (isFrame(target)) {
             target.attach(element)

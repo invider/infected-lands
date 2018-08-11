@@ -10,7 +10,7 @@ var Game = function(init){
         this.generateIsland()
     }
 
-    this.team = []
+    this.teams = []
 
     // setup env
     env.turn = 1
@@ -21,13 +21,22 @@ Game.prototype.getIslandByIndex = function(index){
 };
 
 Game.prototype.spawn = function() {
-    // spawn teams
-    sys.spawn('Team', {
-        name: 'Team 1',
-    }, 'game')
-    sys.spawn('Team', {
-        name: 'Team 2',
-    }, 'game')
+    // spawn human players
+    let humans = env.tuning.players - env.tuning.computers
+
+    for (let i = 0; i < humans; i++) {
+        sys.spawn('Team', {
+            name: 'Player ' + (i+1),
+            computer: false,
+        }, this.teams)
+    }
+
+    for (let i = 0; i < env.tuning.computers; i++) {
+        sys.spawn('Team', {
+            name: 'Computer ' + (i+1),
+            computer: true,
+        }, this.teams)
+    }
 };
 
 Game.prototype.genIslandParams = function(){
