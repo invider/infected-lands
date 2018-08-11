@@ -8,11 +8,11 @@ var IslandMonitor = function(init){
 
 
 IslandMonitor.prototype.draw = function(){
-    ctx.save();
+
+    ctx.beginPath();
     ctx.strokeStyle = '#00FF10'
     ctx.rect(this.x, this.y, this.width, this.height)
     ctx.stroke();
-    ctx.restore();
 };
 
 module.exports = IslandMonitor;

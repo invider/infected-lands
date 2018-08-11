@@ -11,6 +11,8 @@ var Game = function(init){
         this.generateIsland()
     }
 
+    // setup env
+    env.turn = 1
 };
 
 Game.prototype.spawn = function() {
@@ -22,5 +24,9 @@ Game.prototype.generateIsland = function () {
     console.log("Generating island..");
     this.islandMap.push(island);
 };
+
+Game.prototype.nextTurn = function() {
+    log.out('turn #' + env.turn)
+}
 
 module.exports = Game;

@@ -73,4 +73,20 @@ module.exports = function() {
         height:300
     }, 'camera');
 
+
+    // show the story
+    sys.spawn('text/scroll', {
+        Z: 100,
+        rx: 50,
+        ry: 90,
+        period: 2.5,
+        time: 25,       // how long display each line
+        fadein: 2.5,
+        fadeout: 5,
+        speed: -25,
+        txt: env.story,
+        font: '32px Zekton',
+        color: '#60FF20',
+    })
+
 }
