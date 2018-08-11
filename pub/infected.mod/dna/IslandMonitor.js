@@ -1,40 +1,14 @@
 // declare a dot actor
 var IslandMonitor = function(init){
     this.dt = 0;
-    this.map = [];
-    this.islandWidth = 8;
-    this.islandHeight = 8;
-    this.landTileSize = 32;
+    this.currentIsland = 0
     //  copyying parameters from init to this
     sys.augment(this, init);
-    for (let x = 0; x < this.islandWidth; x++){
-        for (let y = 0; y < this.islandHeight; y++){
-            this.map.push(new dna.Land)
-        }
-    }
 };
 
-IslandMonitor.prototype.evo = function(delta){
-
-};
-
-IslandMonitor.prototype.landIndex = function(x, y){
-    return y * this.islandWidth + x
-};
-
-IslandMonitor.prototype.drawLand = function(x, y){
-    let index = this.landIndex(x, y);
-    this.map[index].x = x * this.landTileSize;
-    this.map[index].y = y * this.landTileSize;
-    this.map[index].draw()
-};
 
 IslandMonitor.prototype.draw = function(){
-    for (let x = 0; x < this.islandWidth; x++){
-        for (let y = 0; y < this.islandHeight; y++){
-            this.drawLand(x, y);
-        }
-    }
+    this.drawLand(x, y);
 };
 
 module.exports = IslandMonitor;

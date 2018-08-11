@@ -54,4 +54,6 @@ module.exports = function() {
         height:100
     }, 'camera');
 
+
+    sys.spawn('Game', {});
 }
