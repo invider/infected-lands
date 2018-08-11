@@ -62,15 +62,15 @@ module.exports = function() {
         //Z: 1000,
         x: 0,
         y: 0,
-        width: 300,
-        height:300
+        width: 600,
+        height:400
     }, 'camera');
     sys.spawn('monitors/MyIslandMonitor', {
         //Z: 1000,
         x: 0,
-        y: 400,
-        width: 300,
-        height:300
+        y: 450,
+        width: 600,
+        height:400
     }, 'camera');
 
 
