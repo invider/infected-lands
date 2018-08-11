@@ -77,6 +77,14 @@ module.exports = function() {
         height:400
     }, '');
 
+    sys.spawn('IslandsList', {
+        name: 'islandsList',
+        //Z: 1000,
+        x: 650,
+        y: 0,
+        width: 600,
+        height:400
+    }, '');
 
     // show the story
     sys.spawn('text/scroll', {

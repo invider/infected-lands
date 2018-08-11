@@ -18,9 +18,9 @@ Land.prototype.draw = function(){
     // ctx.fillStyle="#FF0000";
     // ctx.fillRect(this.x, this.y, this.width, this.height);
     res.terrains.draw(this.type,
-        this.x,
-        this.y,
-        this.tilew, this.tilew)
+        0,
+        0,
+        1, 1)
 };
 
 Land.types = {

@@ -17,11 +17,17 @@ Island.prototype.landIndex = function(x, y){
     return y * this.params.islandWidth + x
 };
 
+Island.prototype.getScreenWidth = function(){
+    return {x: this.landTileSize * this.params.islandWidth, y: this.landTileSize * this.params.islandHeight}
+};
+
 Island.prototype.drawLand = function(x, y){
     let index = this.landIndex(x, y);
-    this.map[index].x = this.x + x * this.landTileSize;
-    this.map[index].y = this.y + y * this.landTileSize;
+    ctx.save();
+    ctx.translate(x * this.landTileSize, y * this.landTileSize )
+    ctx.scale(this.landTileSize, this.landTileSize)
     this.map[index].draw()
+    ctx.restore();
 };
 
 Island.prototype.draw = function(){

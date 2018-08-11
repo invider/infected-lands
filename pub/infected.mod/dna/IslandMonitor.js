@@ -18,10 +18,10 @@ IslandMonitor.prototype.draw = function(){
     ctx.font = `${this.fontSize}px Arial`;
     ctx.fillStyle = "#00c5ff"
     ctx.fillText(`Island: ${island.params.name} (${island.params.islandWidth}X${island.params.islandHeight})`,this.x, this.y + this.fontSize);
-
-    island.x = this.x;
-    island.y = this.y + 40;
-    island.draw()
+    ctx.save();
+    ctx.translate(this.x, this.y + 40);
+    island.draw();
+    ctx.restore();
 };
 
 module.exports = IslandMonitor;
