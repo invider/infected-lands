@@ -45,28 +45,13 @@ module.exports = function() {
         coordinates: true,
     }, 'camera')
 
-    sys.spawn('Grid', {
-        color: '#505050',
-        x1: 0,
-        x2: ctx.width + 100,
-        y1: 0,
-        y2: ctx.height,
-        step: ctx.width/7,
-        style: 'target',
-    })
 
-    // show the story
-    sys.spawn('text/scroll', {
-        Z: 100,
-        rx: 50,
-        ry: 90,
-        period: 2.5,
-        time: 25,       // how long display each line
-        fadein: 2.5,
-        fadeout: 5,
-        speed: -25,
-        txt: res.story,
-        font: '32px Zekton',
-        color: '#60FF20',
-    })
+    sys.spawn('Island', {
+        //Z: 1000,
+        x: 30,
+        y: 30,
+        width: 100,
+        height:100
+    }, 'camera');
+
 }
