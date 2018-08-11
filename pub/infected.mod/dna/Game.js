@@ -9,7 +9,10 @@ var Game = function(init){
         this.generateIsland()
     }
 };
-
+Game.prototype.getIslandByIndex = function(index){
+    asserts.true(this.islandMap[index], `No island with index: ${index}`);
+    return this.islandMap[index];
+};
 Game.prototype.generateIsland = function () {
     let island = new dna.Island();
     console.log("Generating island..");
