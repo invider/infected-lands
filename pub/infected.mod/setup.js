@@ -54,8 +54,10 @@ module.exports = function() {
     //     height:100
     // }, 'camera');
 
+    sys.spawn('Game', {
+        name: 'game'
+    });
 
-    sys.spawn('Game', {});
     sys.spawn('monitors/EnemyIslandMonitor', {
         //Z: 1000,
         x: 0,
@@ -70,4 +72,5 @@ module.exports = function() {
         width: 300,
         height:300
     }, 'camera');
+
 }
