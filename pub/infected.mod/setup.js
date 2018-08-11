@@ -45,16 +45,32 @@ module.exports = function() {
         coordinates: true,
     }, 'camera')
 
-
-    sys.spawn('Island', {
-        //Z: 1000,
-        x: 30,
-        y: 30,
-        width: 100,
-        height:100
-    }, 'camera');
+    //
+    // sys.spawn('Island', {
+    //     //Z: 1000,
+    //     x: 30,
+    //     y: 30,
+    //     width: 100,
+    //     height:100
+    // }, 'camera');
 
     sys.spawn('Game', {
         name: 'game'
     });
+
+    sys.spawn('monitors/EnemyIslandMonitor', {
+        //Z: 1000,
+        x: 0,
+        y: 0,
+        width: 300,
+        height:300
+    }, 'camera');
+    sys.spawn('monitors/MyIslandMonitor', {
+        //Z: 1000,
+        x: 0,
+        y: 400,
+        width: 300,
+        height:300
+    }, 'camera');
+
 }
