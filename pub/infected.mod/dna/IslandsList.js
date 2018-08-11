@@ -43,7 +43,6 @@ IslandsList.prototype.draw = function(){
         if (i == lab.targetIsland.currentIsland){
             this.drawSelector(this.x + currentX, this.y + currentY);
         }
-        debugger;
         if (this.horizontal){
             currentX += this.islandsStep + this.islandSize;
         } else {
