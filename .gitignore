@@ -68,6 +68,6 @@ typings/
 .DS_Store
 
 # collider.jam-specific
-pub/man/*
+#pub/man/*
 *topology
 
