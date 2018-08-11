@@ -15,10 +15,30 @@ var Game = function(init){
     // setup env
     env.turn = 1
 };
+/**
+ *
+ * @param index
+ * @returns {Island}
+ */
 Game.prototype.getIslandByIndex = function(index){
     lib.asserts.assertTrue(this.islandMap[index], `No island with index: ${index}`);
     return this.islandMap[index];
 };
+
+
+Game.prototype.getIslandsMaxSizes = function(){
+    let res = {
+        x: 0,
+        y: 0
+    };
+    this.islandMap.forEach(o => {
+        let size = o.getScreenWidth();
+        res.x = Math.max(res.x, size.x);
+        res.y = Math.max(res.y, size.y);
+    })
+    return res;
+};
+
 
 Game.prototype.spawn = function() {
     // spawn teams
