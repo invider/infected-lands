@@ -20,6 +20,20 @@ module.exports = {
         })
         return list.length
     },
+
+    attach: function(target, element) {
+        if (isFrame(target)) {
+            target.attach(element)
+        } else if (isArray(target)) {
+            target.push(element)
+        } else if (isObj(target)) {
+            let name = element.name
+            if (!name) throw "can't attach unnamed element to object!"
+            target[name] = element
+        }
+        return element
+    },
+
     spawn: function(source, spawnData, target, sbase, tbase) {
         if (!sbase) sbase = 'dna/'
         if (!tbase) tbase = 'lab/'
@@ -42,8 +56,8 @@ module.exports = {
                 + tbase + target
             dest = dest[0]
         }
-        if (!sys.isFrame(dest)) return false
 
+        //if (!sys.isFrame(dest)) return false
         /*
         this._.log.debug('~~~ spawning @'
             + this._.name + ':' + sbase + source + ' -> '
@@ -55,18 +69,19 @@ module.exports = {
             if (/[A-Z]/.test(cons.name[0])) {
                 // uppercase means constructor
                 let res = new cons(spawnData)
-                dest.attach(res)
+                sys.attach(dest, res)
                 return res
             } else {
                 // lowercase means factory
-                return dest.attach(cons(spawnData))
+                let res = cons(spawnData)
+                return sys.attach(dest, res)
             }
         } else if (sys.isObj(cons)) {
             if (isFun(cons.spawn)) {
                 // spawn() function
-                return dest.attach(cons.spawn(spawnData))
+                return sys.attach(dest, cons.spawn(spawnData))
             } else {
-                return this.clone(cons)
+                return sys.attach(dest, this.clone(cons))
             }
         } else {
             return false
@@ -94,6 +109,7 @@ module.exports = {
 
         return res
     },
+
     extend: function(child, parent){
         child.prototype = Object.create(parent.prototype);
         child.prototype.constructor = child;
