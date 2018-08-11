@@ -12,7 +12,7 @@ var Game = function(init){
 
 };
 Game.prototype.getIslandByIndex = function(index){
-    asserts.true(this.islandMap[index], `No island with index: ${index}`);
+    lib.asserts.assertTrue(this.islandMap[index], `No island with index: ${index}`);
     return this.islandMap[index];
 };
 
