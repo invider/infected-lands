@@ -15,7 +15,8 @@ IslandMonitor.prototype.draw = function(){
     ctx.stroke();
 
     ctx.font = "30px Arial";
-    ctx.fillText(`Island: ${island.params.name} (${island.params.islandWidth}X${island.params.islandHeight})`,0,0);
+    ctx.fillStyle = "#00c5ff"
+    ctx.fillText(`Island: ${island.params.name} (${island.params.islandWidth}X${island.params.islandHeight})`,this.x, this.y);
 
 
     island.x = this.x;
