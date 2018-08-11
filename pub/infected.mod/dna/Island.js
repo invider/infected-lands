@@ -1,4 +1,8 @@
-// declare a dot actor
+/**
+ *
+ * @param params
+ * @constructor
+ */
 var Island = function(params){
     this.params = params;
     this.map = [];
@@ -24,9 +28,9 @@ Island.prototype.getScreenWidth = function(){
 Island.prototype.drawLand = function(x, y){
     let index = this.landIndex(x, y);
     ctx.save();
-    ctx.translate(x * this.landTileSize, y * this.landTileSize )
-    ctx.scale(this.landTileSize, this.landTileSize)
-    this.map[index].draw()
+    ctx.translate(x * this.landTileSize, y * this.landTileSize );
+    ctx.scale(this.landTileSize, this.landTileSize);
+    this.map[index].draw();
     ctx.restore();
 };
 
