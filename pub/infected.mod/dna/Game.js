@@ -1,14 +1,21 @@
 // declare a dot actor
 var Game = function(init){
+    //  copyying parameters from init to this
+    sys.augment(this, init);
+
     this.dt = 0;
     this.islandMap = [];
     this.islands = env.tuning.islands;
-    //  copyying parameters from init to this
-    sys.augment(this, init);
+
     for (let i = 0; i < this.islands; i++){
         this.generateIsland()
     }
+
 };
+
+Game.prototype.spawn = function() {
+    sys.spawn('Player', {}, 'game')
+}
 
 Game.prototype.generateIsland = function () {
     let island = new dna.Island();

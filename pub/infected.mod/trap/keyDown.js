@@ -1,5 +1,4 @@
 module.exports = function(e) {
-    console.log(e.code)
     switch(e.code) {
     case 'ArrowLeft': lab.camera.keys[0] = true; break;
     case 'ArrowUp': lab.camera.keys[1] = true; break;

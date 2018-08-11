@@ -15,7 +15,6 @@ var Island = function(init){
 };
 
 Island.prototype.evo = function(delta){
-
 };
 
 Island.prototype.landIndex = function(x, y){
