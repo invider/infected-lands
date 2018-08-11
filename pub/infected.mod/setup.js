@@ -85,7 +85,7 @@ module.exports = function() {
         fadeout: 5,
         speed: -25,
         txt: env.story,
-        font: '32px Zekton',
+        font: '24px Zekton',
         color: '#60FF20',
     })
 
