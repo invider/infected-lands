@@ -56,6 +56,7 @@ Game.prototype.spawn = function() {
         }, this.teams)
     }
 
+    // spawn computers
     for (let i = 0; i < env.tuning.computers; i++) {
         sys.spawn('Team', {
             id: team++,
@@ -64,6 +65,8 @@ Game.prototype.spawn = function() {
             startIsland: island++,
         }, this.teams)
     }
+
+    this.focus = this.teams[0]
 };
 
 Game.prototype.genIslandParams = function(){
@@ -85,6 +88,12 @@ Game.prototype.generateIsland = function () {
     island.id = this.islandMap.length
     this.islandMap.push(island);
 };
+
+Game.prototype.move = function(dir) {
+    if (this.focus) {
+        this.focus.player.move(dir)
+    }
+}
 
 Game.prototype.nextTurn = function() {
     env.turn++

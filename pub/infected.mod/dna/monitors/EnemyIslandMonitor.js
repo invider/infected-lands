@@ -8,12 +8,18 @@ EnemyIslandMonitor.prototype.nextIsland = function() {
     if (this.currentIsland >= lab.game.islands) {
         this.currentIsland = 0
     }
+    if (this.currentIsland === lab.myIsland.currentIsland) {
+        this.nextIsland()
+    }
 }
 
 EnemyIslandMonitor.prototype.prevIsland = function() {
     this.currentIsland--
     if (this.currentIsland < 0) {
         this.currentIsland = lab.game.islands - 1
+    }
+    if (this.currentIsland === lab.myIsland.currentIsland) {
+        this.prevIsland()
     }
 }
 

@@ -1,17 +1,11 @@
 module.exports = function(e) {
     if (!e.repeat) {
         switch(e.code) {
-        /*
-        case 'ArrowLeft': lab.camera.keys[0] = true; break;
-        case 'ArrowUp': lab.camera.keys[1] = true; break;
-        case 'ArrowRight': lab.camera.keys[2] = true; break;
-        case 'ArrowDown': lab.camera.keys[3] = true; break;
+        case 'KeyA': case 'ArrowLeft': lab.game.move(1); break;
+        case 'KeyW': case 'ArrowUp': lab.game.move(2); break;
+        case 'KeyD': case 'ArrowRight': lab.game.move(3); break;
+        case 'KeyS': case 'ArrowDown': lab.game.move(4); break;
 
-        case 'KeyA': lab.camera.keys[0] = true; break;
-        case 'KeyW': lab.camera.keys[1] = true; break;
-        case 'KeyD': lab.camera.keys[2] = true; break;
-        case 'KeyS': lab.camera.keys[3] = true; break;
-        */
         case 'Comma': case 'KeyQ': lab.targetIsland.prevIsland(); break;
         case 'Period': case 'KeyE': lab.targetIsland.nextIsland(); break;
         case 'Enter': lab.game.nextTurn(); break;

@@ -76,6 +76,7 @@ module.exports = function() {
         width: 600,
         height:400
     }, '');
+    lab.targetIsland.nextIsland()
 
     sys.spawn('IslandsList', {
         name: 'islandsList',
