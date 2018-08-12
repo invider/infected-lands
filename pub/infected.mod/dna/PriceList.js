@@ -69,6 +69,12 @@ PriceList.prototype.drawLine = function(tree, selected){
         this.drawItem(sporeItem, currentX, 10)
     }
 };
+PriceList.prototype.bye = function(){
+    debugger;
+
+    var element = this._getTreeList()[this.selection];
+    console.log(element);
+};
 PriceList.prototype.move = function(dir){
     switch(dir) {
         case lib.consts.directions.UP: this.selection --; break;
@@ -83,6 +89,9 @@ PriceList.prototype.move = function(dir){
     }
 };
 PriceList.prototype.draw = function(){
+    if (!lab.game.focus.player.shopping ){
+        return
+    }
     let currentX = 0;
     let currentY = 0;
     this.createSpores();

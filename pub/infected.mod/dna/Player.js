@@ -21,7 +21,7 @@ let Player = function(st) {
 
 Player.prototype.startTurn = function() {
 	this.actionPoints = this.SPEED
-}
+};
 
 Player.prototype.move = function(dir) {
     let tx = this.x

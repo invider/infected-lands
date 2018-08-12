@@ -23,6 +23,19 @@ Game.prototype.getIslandByIndex = function(index){
     return this.islandMap[index];
 };
 
+Game.prototype.spacePressed = function(){
+    lab.game.focus.player.shopping = !lab.game.focus.player.shopping;
+};
+
+Game.prototype.enterPressed = function(){
+    if (lab.game.focus.player.shopping){
+        lab.priceList.bye();
+    } else {
+        this.endTurn();
+    }
+};
+
+
 Game.prototype.getIslandsMaxSizes = function(){
     let res = {
         x: 0,
