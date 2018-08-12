@@ -57,7 +57,7 @@ Island.prototype.draw = function(){
 
     // draw players
     let island = this
-    lab.game.teams.forEach(function (t) {
+    lab.game.team.forEach(function (t) {
         if (t.player.island === island.id) {
             island.drawTile(t.player.x, t.player.y, t.player)
         }

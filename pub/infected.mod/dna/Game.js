@@ -10,7 +10,7 @@ var Game = function(init){
         this.generateIsland()
     }
 
-    this.teams = []
+    this.team = []
 
     // setup env
     env.turn = 1
@@ -24,7 +24,6 @@ Game.prototype.getIslandByIndex = function(index){
     lib.asserts.assertTrue(this.islandMap[index], `No island with index: ${index}`);
     return this.islandMap[index];
 };
-
 
 Game.prototype.getIslandsMaxSizes = function(){
     let res = {
@@ -53,7 +52,7 @@ Game.prototype.spawn = function() {
             name: 'Player ' + (i+1),
             computer: false,
             startIsland: island++,
-        }, this.teams)
+        }, this.team)
     }
 
     // spawn computers
@@ -63,10 +62,11 @@ Game.prototype.spawn = function() {
             name: 'Computer ' + (i+1),
             computer: true,
             startIsland: island++,
-        }, this.teams)
+        }, this.team)
     }
 
-    this.focus = this.teams[0]
+    this.focus = this.team[0]
+    this.control = this.team[0]
 };
 
 Game.prototype.genIslandParams = function(){

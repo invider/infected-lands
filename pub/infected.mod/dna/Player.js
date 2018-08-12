@@ -24,7 +24,7 @@ Player.prototype.draw = function() {
     res.terrains.draw(230, 0, 0, 1, 1)
 
     ctx.beginPath()
-    ctx.strokeStyle = env.tuning.teamColors[this.team]
+    ctx.strokeStyle = env.tuning.team[this.team].color
     ctx.lineWidth = 1/16
     ctx.rect(0, 0, 1, 1)
     ctx.stroke()

@@ -3,10 +3,22 @@ module.exports = {
     players: 4,
     computers: 2,
 
-    teamColors: [
-        '#ff0000',
-        '#00ff00',
-        '#0000ff',
-        '#ff00ff',
+    team: [
+        {
+            name: 'Red',
+            color: '#ff0000',
+        },
+        {
+            name: 'Green',
+            color: '#40ff00',
+        },
+        {
+            name: 'Blue',
+            color: '#3010ff',
+        },
+        {
+            name: 'Gray',
+            color: '#d0d0d0',
+        },
     ],
 }
