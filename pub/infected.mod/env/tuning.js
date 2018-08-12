@@ -3,6 +3,8 @@ module.exports = {
     players: 4,
     computers: 2,
 
+	turnLabelColor: '#dfff20',
+
     team: [
         {
             name: 'Red',

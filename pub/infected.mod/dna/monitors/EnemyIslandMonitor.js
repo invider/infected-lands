@@ -23,4 +23,11 @@ EnemyIslandMonitor.prototype.prevIsland = function() {
     }
 }
 
+EnemyIslandMonitor.prototype.refocus = function() {
+    // don't look at the same island as myIsland
+    if (this.currentIsland === lab.myIsland.currentIsland) {
+        this.nextIsland()
+    }
+}
+
 module.exports = EnemyIslandMonitor;

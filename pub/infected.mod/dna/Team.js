@@ -6,8 +6,6 @@ let Team = function(st) {
         team: this.id,
         island: this.startIsland,
     }, this)
-
-    log.out('team ' + this.name)
 }
 
 Team.prototype.evo = function(dt) {

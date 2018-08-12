@@ -10,10 +10,8 @@ var Game = function(init){
         this.generateIsland()
     }
 
+    this.turn = 1
     this.team = []
-
-    // setup env
-    env.turn = 1
 };
 /**
  *
@@ -43,9 +41,10 @@ Game.prototype.spawn = function() {
 
     let team = 0
     let island = 0
+    this.teams = env.tuning.players
 
     // spawn human players
-    let humans = env.tuning.players - env.tuning.computers
+    let humans = this.teams - env.tuning.computers
     for (let i = 0; i < humans; i++) {
         sys.spawn('Team', {
             id: team++,
@@ -95,9 +94,51 @@ Game.prototype.move = function(dir) {
     }
 }
 
-Game.prototype.nextTurn = function() {
-    env.turn++
-    log.out('turn #' + env.turn)
+Game.prototype.showNextTurn = function() {
+	sys.spawn('text/fadeText', {
+		font: '32px zekton',
+		fillStyle: env.tuning.turnLabelColor,
+		x: ctx.width * 0.8,
+		y: ctx.height * 0.5,
+		align: 'center',
+		text: 'Turn ' + this.turn,
+		dx: 0,
+		dy: -100,
+		ttl: 3,
+		tti: 1,
+		ttf: 1,
+	})
+}
+
+Game.prototype.showPlayerTurn = function() {
+	sys.spawn('text/fadeText', {
+		font: '32px zekton',
+		fillStyle: env.tuning.team[this.control.id].color,
+		x: ctx.width * 0.7,
+		y: ctx.height * 0.5,
+		align: 'center',
+		text: env.tuning.team[this.control.id].name + ' Player Turn',
+		dx: -200,
+		dy: 0,
+		ttl: 3,
+		tti: 1,
+		ttf: 1,
+	})
+}
+
+Game.prototype.endTurn = function() {
+    let nextPlayer = this.control.id + 1
+    if (nextPlayer >= this.teams) {
+        this.turn++
+		this.showNextTurn()
+        nextPlayer = 0
+    }
+    this.focus = this.team[nextPlayer]
+    this.control = this.team[nextPlayer]
+	this.control.player.startTurn()
+    lab.myIsland.focus()
+    lab.targetIsland.refocus()
+    this.showPlayerTurn()
 }
 
 module.exports = Game;

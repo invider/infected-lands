@@ -1,11 +1,18 @@
 let Player = function(st) {
+	this.SPEED = 10
+
     this.x = 2
     this.y = 0
     this.island = 0
+	this.actionPoints = this.SPEED
 
     sys.augment(this, st)
 
     this.y += this.team
+}
+
+Player.prototype.startTurn = function() {
+	this.actionPoints = this.SPEED
 }
 
 Player.prototype.move = function(dir) {
@@ -15,6 +22,11 @@ Player.prototype.move = function(dir) {
     case 3: this.x++; if (this.x >= 10) this.x = 9; break;
     case 4: this.y++; if (this.y >= 10) this.y = 9; break;
     }
+
+	this.actionPoints--
+	if (this.actionPoints <= 0) {
+		lab.game.endTurn()
+	}
 }
 
 Player.prototype.evo = function(dt) {

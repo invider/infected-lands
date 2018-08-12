@@ -8,7 +8,7 @@ module.exports = function(e) {
 
         case 'Comma': case 'KeyQ': lab.targetIsland.prevIsland(); break;
         case 'Period': case 'KeyE': lab.targetIsland.nextIsland(); break;
-        case 'Enter': lab.game.nextTurn(); break;
+        case 'Enter': lab.game.endTurn(); break;
         }
     }
 }
