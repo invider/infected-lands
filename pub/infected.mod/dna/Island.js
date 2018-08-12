@@ -25,8 +25,39 @@ var Island = function(params){
     }
 };
 
-Island.prototype.dropSpore = function(type) {
-    let place = lib.math.rndi(this.params.islandWidth * this.params.islandHeight)
+Island.prototype.findFreePlaceOnRadius = function(x, y, r) {
+    var fromX = Math.max(x - r, 0);
+    var fromY = Math.max(y - r, 0);
+    var toX = Math.min(x + r, this.params.islandWidth - 1);
+    var toY = Math.min(y + r, this.params.islandHeight - 1);
+    let res = []
+    for (var i = fromX; i< toX; i++){
+        for (var j = fromY; j< toY; j++){
+
+            if (lib.math.distance(x,y,i,j) <=r && !this.isOccupied(x, y)){
+                res.push({x:i, y:j});
+            }
+        }
+    }
+    return res;
+};
+
+Island.prototype.dropSporeInRadius = function(type, x, y, r) {
+    let places = this.findFreePlaceOnRadius(x, y, r);
+    if (places.length == 0){
+        return;
+    }
+    let place = lib.arrayTools.randomElement(places);
+    this.plant[this.landIndex(place)] = new dna.Spore(type, this, this.landIndex(x, y));
+}
+
+Island.prototype.dropSpore = function(type, x, y) {
+    let place
+    if (x == undefined){
+        place = lib.math.rndi(this.params.islandWidth * this.params.islandHeight);
+    } else {
+        place = this.landIndex(x, y)
+    }
     this.plant[place] = new dna.Spore(type, this, place)
 }
 
@@ -79,6 +110,10 @@ Island.prototype.turn = function() {
 };
 
 Island.prototype.landIndex = function(x, y){
+    if (y === undefined){
+        y = x.y;
+        x = x.x;
+    }
     return y * this.params.islandWidth + x
 };
 
@@ -95,6 +130,15 @@ Island.prototype.isWalkable = function(x, y){
         if (plant && plant.solid) return false
     }
     return walkable
+};
+
+Island.prototype.isOccupied = function(x, y){
+    let occupied = 0 <= x && x < this.params.islandWidth && 0 <= y && y < this.params.islandHeight;
+    if (occupied) {
+        let plant = this.plant[this.landIndex(x, y)];
+        if (plant) return false;
+    }
+    return occupied;
 };
 
 Island.prototype.isTargetable = function(x, y){

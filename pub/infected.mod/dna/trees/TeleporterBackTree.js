@@ -13,8 +13,8 @@ TeleporterBackTree.prototype.targeted = function(island, target){
 
 TeleporterBackTree.prototype.touch = function(subject) {
     subject.islandId = this.targetTree.island.id
-    subject.x = this.targetTree.x
-    subject.y = this.targetTree.y
+    subject.x = this.targetTree.x;
+    subject.y = this.targetTree.y;
     lab.game.switchIslands()
 }
 

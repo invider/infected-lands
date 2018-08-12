@@ -2,9 +2,11 @@ let BlueSporeTree = function(st) {
     dna.Tree.call(this, st)
     this.ttl = env.tuning.treeTTL
     this.fillstyle = "#0000ff";
-}
+    this.dropRadius = 2;
+    this.type = dna.Spore.TYPE.BLUE;
+};
 
-BlueSporeTree.prototype = new dna.Tree()
+sys.extend(BlueSporeTree, dna.SporeTree);
 
 module.exports = BlueSporeTree
 
