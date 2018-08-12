@@ -1,6 +1,11 @@
 let Player = function(st) {
 	this.SPEED = 10;
     this.targeting = 1;
+    this.spores = {
+        red: 0,
+        green: 0,
+        blue: 0
+    };
     this.x = 2;
     this.y = 0;
     this.island = 0;

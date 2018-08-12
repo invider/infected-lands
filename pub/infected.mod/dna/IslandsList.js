@@ -28,8 +28,15 @@ IslandsList.prototype.drawSelector = function (x, y) {
 IslandsList.prototype.draw = function(){
     let currentX = 0;
     let currentY = 0;
-    this.scale = this.calcScale();
 
+    this.scale = this.calcScale();
+    if (!this.horizontal) {
+        currentX += (this.width - this.islandSize) / 2;
+    } else {
+        currentY += (this.height - this.islandSize) / 2;
+    }
+    ctx.strokeStyle = "#00aa00"
+    ctx.strokeRect(this.x, this.y, this.width, this.height);
     for (let i = 0; i < lab.game.islands; i++){
         var island = lab.game.getIslandByIndex(i);
         var islandSizes = island.getScreenSize();
