@@ -6,13 +6,26 @@
 var Island = function(params){
     this.params = params;
     this.map = [];
+    this.plant = [];
+
     this.landTileSize = 32;
     for (let x = 0; x < this.params.islandWidth; x++){
         for (let y = 0; y < this.params.islandHeight; y++){
             this.map.push(new dna.Land())
         }
     }
+
+    for (let i = 0; i < 15; i++) {
+        this.drop(lib.math.rndi(dna.Spore.TYPES))
+    }
 };
+
+Island.prototype.drop = function(type) {
+    let place = lib.math.rndi(this.params.islandWidth * this.params.islandHeight)
+
+    this.plant[place] = new dna.Spore(type)
+    console.log('type: ' + type)
+}
 
 Island.prototype.evo = function(delta){
 };
@@ -51,6 +64,11 @@ Island.prototype.isTargetable = function(x, y){
 Island.prototype.drawLand = function(x, y){
     let index = this.landIndex(x, y);
     this.drawTile(x, y, this.map[index])
+
+    if (this.plant[index]) {
+        // we have something growing here
+        this.drawTile(x, y, this.plant[index])
+    }
 };
 
 Island.prototype.adjustCoordinates = function(x, y){
