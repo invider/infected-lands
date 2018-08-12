@@ -23,13 +23,17 @@ Game.prototype.getIslandByIndex = function(index){
     return this.islandMap[index];
 };
 
+Game.prototype.getCurrentIsland = function() {
+    return this.getIslandByIndex(lab.myIsland.currentIsland)
+}
+
 Game.prototype.spacePressed = function(){
     lab.game.focus.player.shopping = !lab.game.focus.player.shopping;
 };
 
 Game.prototype.enterPressed = function(){
     if (lab.game.focus.player.shopping){
-        lab.priceList.bye();
+        lab.priceList.buy();
     } else {
         this.endTurn();
     }

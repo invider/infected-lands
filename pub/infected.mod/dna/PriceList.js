@@ -69,12 +69,15 @@ PriceList.prototype.drawLine = function(tree, selected){
         this.drawItem(sporeItem, currentX, 10)
     }
 };
-PriceList.prototype.bye = function(){
-    debugger;
 
+PriceList.prototype.buy = function(){
     var element = this._getTreeList()[this.selection];
     console.log(element);
+    let island = lab.game.getCurrentIsland()
+    let player = lab.game.control.player
+    island.plantTree(player.x, player.y, dna.trees[element.name])
 };
+
 PriceList.prototype.move = function(dir){
     switch(dir) {
         case lib.consts.directions.UP: this.selection --; break;

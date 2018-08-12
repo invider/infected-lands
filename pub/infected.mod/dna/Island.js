@@ -30,9 +30,19 @@ Island.prototype.dropSpore = function(type) {
 }
 
 Island.prototype.dropTree = function(cons) {
-    console.dir(cons)
-    let place = lib.math.rndi(this.params.islandWidth * this.params.islandHeight)
-    this.plant[place] = new cons()
+    let index = lib.math.rndi(this.params.islandWidth * this.params.islandHeight)
+    this.plant[index] = new cons({
+        island: this,
+        index: index,
+    })
+}
+
+Island.prototype.plantTree = function(x, y, cons) {
+    let index = this.landIndex(x, y)
+    this.plant[index] = new cons({
+        island: this,
+        index: index,
+    })
 }
 
 Island.prototype.removePlant = function(index) {
