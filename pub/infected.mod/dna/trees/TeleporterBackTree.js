@@ -1,16 +1,22 @@
-let TeleporterTree = function(st) {
+let TeleporterBackTree = function(st) {
     dna.Tree.call(this, st)
     this.ttl = env.tuning.treeTTL
     this.fillstyle = "#555";
 };
-sys.extend(TeleporterTree, dna.Tree);
+sys.extend(TeleporterBackTree, dna.Tree);
 
-TeleporterTree.prototype.planted = function(){
+TeleporterBackTree.prototype.planted = function(){
 };
 
-TeleporterTree.prototype.targeted = function(island, target){
-
+TeleporterBackTree.prototype.targeted = function(island, target){
 };
 
-module.exports = TeleporterTree
+TeleporterBackTree.prototype.touch = function(subject) {
+    subject.islandId = this.targetTree.island.id
+    subject.x = this.targetTree.x
+    subject.y = this.targetTree.y
+    lab.game.switchIslands()
+}
+
+module.exports = TeleporterBackTree
 

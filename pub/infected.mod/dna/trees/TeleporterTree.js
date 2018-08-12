@@ -13,8 +13,16 @@ TeleporterTree.prototype.planted = function(){
 };
 
 TeleporterTree.prototype.targeted = function(island, target){
-    island.plantTree(target.x, target.y, dna.trees.TeleporterBackTree)
+    this.targetTree = island.plantTree(target.x, target.y, dna.trees.TeleporterBackTree)
+    this.targetTree.targetTree = this // set the backlink
 };
+
+TeleporterTree.prototype.touch = function(subject) {
+    subject.islandId = this.targetTree.island.id
+    subject.x = this.targetTree.x
+    subject.y = this.targetTree.y
+    lab.game.switchIslands()
+}
 
 module.exports = TeleporterTree
 

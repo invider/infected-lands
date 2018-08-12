@@ -43,9 +43,11 @@ Island.prototype.plantTree = function(x, y, cons) {
     this.plant[index] = new cons({
         island: this,
         index: index,
+        x: x,
+        y: y,
     })
-    debugger;
     this.plant[index].planted();
+    return this.plant[index]
 };
 
 Island.prototype.putSlime  = function(x, y, team) {
@@ -60,6 +62,11 @@ Island.prototype.removeSlime = function(x, y) {
 
 Island.prototype.removePlant = function(index) {
     this.plant[index] = false
+};
+
+Island.prototype.touch = function(x, y, subject) {
+    let plant = this.plant[this.landIndex(x, y)]
+    if (plant && plant.touch) plant.touch(subject)
 };
 
 Island.prototype.evo = function(delta){

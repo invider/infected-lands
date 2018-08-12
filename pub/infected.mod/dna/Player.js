@@ -49,6 +49,9 @@ Player.prototype.move = function(dir) {
             lab.game.endTurn()
         }
     } else {
+        // try to touch
+        island.touch(tx, ty, this)
+
         // TODO play denied sfx
     }
 }
