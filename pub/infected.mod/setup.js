@@ -42,7 +42,7 @@ module.exports = function() {
 
     sys.spawn('Grid', {
         color: '#ff7080',
-        top: 1000,
+        top: 2000,
         step: 100,
         coordinates: false,
     }, '')

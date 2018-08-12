@@ -40,7 +40,7 @@ Island.prototype.drawTile = function(x, y, e) {
 };
 
 Island.prototype.isWalkable = function(x, y){
-    return 0 <= x < this.params.islandWidth && 0 <= y < this.params.islandHeight;
+    return 0 <= x && x < this.params.islandWidth && 0 <= y && y < this.params.islandHeight
 };
 
 Island.prototype.drawLand = function(x, y){

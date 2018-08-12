@@ -16,17 +16,27 @@ Player.prototype.startTurn = function() {
 }
 
 Player.prototype.move = function(dir) {
+    let tx = this.x
+    let ty = this.y
     switch(dir) {
-    case 1: this.x--; if (this.x < 0) this.x = 0; break;
-    case 2: this.y--; if (this.y < 0) this.y = 0; break;
-    case 3: this.x++; if (this.x >= 10) this.x = 9; break;
-    case 4: this.y++; if (this.y >= 10) this.y = 9; break;
+    case 1: tx--; break;
+    case 2: ty--; break;
+    case 3: tx++; break;
+    case 4: ty++; break;
     }
 
-	this.actionPoints--
-	if (this.actionPoints <= 0) {
-		lab.game.endTurn()
-	}
+    // check the posibility to move
+    let walkable = lab.game.islandMap[this.island].isWalkable(tx, ty)
+    if (walkable) {
+        this.x = tx
+        this.y = ty
+        this.actionPoints--
+        if (this.actionPoints <= 0) {
+            lab.game.endTurn()
+        }
+    } else {
+        // TODO play denied sfx
+    }
 }
 
 Player.prototype.evo = function(dt) {
