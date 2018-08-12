@@ -3,7 +3,7 @@ var IslandMonitor = function(init){
     this.dt = 0;
     this.fontSize = 24;
     this.currentIsland = 0;
-    this.islandOffset = 40
+    this.islandYOffset = 40
     //  copyying parameters from init to this
     sys.augment(this, init);
 };
@@ -28,7 +28,7 @@ IslandMonitor.prototype.draw = function(){
     ctx.textBaseline = 'bottom'
     ctx.fillText(`Island: ${island.params.name} (${island.params.islandWidth}X${island.params.islandHeight})`,this.x, this.y + this.fontSize);
 
-    ctx.translate(this.x, this.y + this.islandOffset);
+    ctx.translate(this.x, this.y + this.islandYOffset);
     island.draw();
 
     ctx.restore();

@@ -71,6 +71,7 @@ EnemyIslandMonitor.prototype.moveTarget = function(direction){
     }
 };
 EnemyIslandMonitor.prototype.draw = function() {
+    debugger;
     this.__superProto__.draw.call(this);
     let target = this._showTarget();
     if (target){
