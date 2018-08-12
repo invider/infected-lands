@@ -1,7 +1,7 @@
 let Tree = function(st) {
     this.solid = true
-    this.ttl = -1
-
+    this.ttl = -1;
+    this.fillstyle = "#333444";
     sys.augment(this, st)
 }
 
@@ -14,7 +14,7 @@ Tree.prototype.evo = function(dt) {
 }
 
 Tree.prototype.draw = function() {
-    ctx.fillStyle = '#90D070'
+    ctx.fillStyle = this.fillstyle;
     ctx.fillRect(0.25, 0.25, 0.5, 0.5)
 }
 

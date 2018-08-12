@@ -8,9 +8,9 @@ var PriceList = function(init){
     this.horizontal = false;
     //  copyying parameters from init to this
     sys.augment(this, init);
-    this.treeCache = {
-
-    }
+    this.treeScale = 64;
+    this.treeCache = {};
+    this.treeStepY = 10;
 };
 
 PriceList.prototype._getTree = function(name){
@@ -27,13 +27,17 @@ PriceList.prototype._getTreeList = function(){
 PriceList.prototype._drawSpores = function(tree){
 
 };
+PriceList.prototype.drawItem = function(item, x, y){
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.scale(this.treeScale, this.treeScale);
+    item.draw();
+    ctx.restore()
+};
 
 PriceList.prototype.drawLine = function(tree){
     let treeObject = this._getTree(tree.name);
-    ctx.save();
-    ctx.translate(10, 10);
-    treeObject.draw();
-    ctx.restore()
+    this.drawItem(treeObject, 10, 10);
 };
 
 PriceList.prototype.draw = function(){
@@ -45,9 +49,10 @@ PriceList.prototype.draw = function(){
     var list = this._getTreeList();
     for (let i = 0; i < list.length; i++){
         ctx.save();
-        ctx.translate(currentX, currentY);
+        ctx.translate(this.x + currentX, this.y + currentY);
         this.drawLine(list[i]);
         ctx.restore();
+        currentY += this.treeScale + this.treeStepY;
     }
 };
 
