@@ -2,6 +2,7 @@ module.exports = {
     islands: 5,
     players: 4,
     computers: 2,
+    actionPoints: 30,
 
 	turnLabelColor: '#dfff20',
 

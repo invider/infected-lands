@@ -22,9 +22,7 @@ var Island = function(params){
 
 Island.prototype.drop = function(type) {
     let place = lib.math.rndi(this.params.islandWidth * this.params.islandHeight)
-
     this.plant[place] = new dna.Spore(type)
-    console.log('type: ' + type)
 }
 
 Island.prototype.evo = function(delta){
