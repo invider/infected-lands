@@ -33,7 +33,11 @@ Island.prototype.drawTile = function(x, y, e) {
     e.draw();
 
     ctx.restore();
-}
+};
+
+Island.prototype.isWalkable = function(x, y){
+    return 0 < x < this.params.islandWidth && 0 < y < this.params.islandHeight;
+};
 
 Island.prototype.drawLand = function(x, y){
     let index = this.landIndex(x, y);
