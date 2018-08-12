@@ -158,10 +158,10 @@ Game.prototype.showNextTurn = function() {
 	})
 }
 
-Game.prototype.switchIslands = function() {
-    let tar = lab.myIsland.currentIsland
-    lab.myIsland.currentIsland = lab.targetIsland.currentIsland
-    lab.targetIsland.currentIsland = tar
+Game.prototype.switchCurrentIsland = function(targetId) {
+    let curId = lab.myIsland.currentIsland
+    lab.myIsland.currentIsland = targetId
+    lab.targetIsland.currentIsland = curId
 }
 
 Game.prototype.nextTurn = function() {

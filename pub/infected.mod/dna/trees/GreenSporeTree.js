@@ -1,5 +1,5 @@
 let GreenSporeTree = function(st) {
-    dna.Tree.call(this, st)
+    dna.SporeTree.call(this, st)
     this.fillstyle = "#00ff00";
     this.ttl = env.tuning.treeTTL
     this.type = dna.Spore.TYPE.GREEN;

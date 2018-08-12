@@ -1,5 +1,5 @@
 let SporeTree = function(st) {
-    dna.Tree.call(this, st)
+    dna.BaseTree.call(this, st)
     this.ttl = env.tuning.treeTTL
     this.dropRadius = 2;
     this.spawnPeriod = 1;
@@ -7,7 +7,7 @@ let SporeTree = function(st) {
     this.type = dna.Spore.TYPE.RED;
 };
 
-sys.extend(SporeTree, dna.Tree);
+sys.extend(SporeTree, dna.BaseTree);
 
 SporeTree.prototype.turn = function(){
     this.turnCounter = this.turnCounter || 0

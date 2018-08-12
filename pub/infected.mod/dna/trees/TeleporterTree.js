@@ -1,9 +1,9 @@
 let TeleporterTree = function(st) {
-    dna.Tree.call(this, st)
+    dna.BaseTree.call(this, st)
     this.ttl = env.tuning.treeTTL
     this.fillstyle = "#ccc";
 };
-sys.extend(TeleporterTree, dna.Tree);
+sys.extend(TeleporterTree, dna.BaseTree);
 
 TeleporterTree.prototype.planted = function(){
     /** @type Player */
@@ -22,7 +22,7 @@ TeleporterTree.prototype.touch = function(subject) {
     subject.islandId = this.targetTree.island.id
     subject.x = this.targetTree.x
     subject.y = this.targetTree.y
-    lab.game.switchIslands()
+    lab.game.switchCurrentIsland(subject.islandId)
     lib.sfx(res.sfx.teleport, 0.5)
 }
 

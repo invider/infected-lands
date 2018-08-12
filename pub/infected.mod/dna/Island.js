@@ -19,10 +19,6 @@ var Island = function(params){
     for (let i = 0; i < 15; i++) {
         this.dropSpore(lib.math.rndi(dna.Spore.TYPES))
     }
-
-    for (let i = 0; i < 4; i++) {
-        this.dropTree(dna.Tree)
-    }
 };
 
 Island.prototype.findFreePlaceOnRadius = function(x, y, r) {
