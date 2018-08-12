@@ -57,6 +57,11 @@ Player.prototype.addSpore = function(type) {
     this.spores[type]++
 }
 
+Player.prototype.slime = function() {
+    let island = lab.game.islandMap[this.islandId]
+    island.putSlime(this.x, this.y, this.team)
+}
+
 Player.prototype.evo = function(dt) {
 }
 

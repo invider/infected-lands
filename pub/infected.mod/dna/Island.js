@@ -7,6 +7,7 @@ var Island = function(params){
     this.params = params;
     this.map = [];
     this.plant = [];
+    this.slime = [];
 
     this.landTileSize = 32;
     for (let x = 0; x < this.params.islandWidth; x++){
@@ -45,6 +46,16 @@ Island.prototype.plantTree = function(x, y, cons) {
     })
 }
 
+Island.prototype.putSlime  = function(x, y, team) {
+    this.slime[this.landIndex(x, y)] = new dna.Slime({
+        team: team,
+    })
+}
+
+Island.prototype.removeSlime = function(x, y) {
+    this.slime[this.landIndex(x, y)] = false
+}
+
 Island.prototype.removePlant = function(index) {
     this.plant[index] = false
 }
@@ -68,7 +79,18 @@ Island.prototype.getScreenSize = function(x, y){
     return {x: this.landTileSize * x, y: this.landTileSize * y}
 };
 
+Island.prototype.isWalkable = function(x, y){
+    let walkable = 0 <= x && x < this.params.islandWidth && 0 <= y && y < this.params.islandHeight
+    if (walkable) {
+        let plant = this.plant[this.landIndex(x, y)]
+        if (plant && plant.solid) return false
+    }
+    return walkable
+};
 
+Island.prototype.isTargetable = function(x, y){
+    return 0 <= x && x < this.params.islandWidth && 0 <= y && y < this.params.islandHeight
+};
 
 Island.prototype.drawTile = function(x, y, e) {
     ctx.save();
@@ -80,28 +102,13 @@ Island.prototype.drawTile = function(x, y, e) {
     ctx.restore();
 };
 
-Island.prototype.isWalkable = function(x, y){
-    let walkable = 0 <= x && x < this.params.islandWidth && 0 <= y && y < this.params.islandHeight
-    if (walkable) {
-        let plant = this.plant[this.landIndex(x, y)]
-        if (plant && plant.solid) return false
-    }
-    return walkable
-};
-
-
-Island.prototype.isTargetable = function(x, y){
-    return 0 <= x && x < this.params.islandWidth && 0 <= y && y < this.params.islandHeight
-};
-
-Island.prototype.drawLand = function(x, y){
+Island.prototype.drawSquare = function(x, y){
     let index = this.landIndex(x, y);
-    this.drawTile(x, y, this.map[index])
 
-    if (this.plant[index]) {
-        // we have something growing here
-        this.drawTile(x, y, this.plant[index])
-    }
+    // draw land, slime and plants
+    this.drawTile(x, y, this.map[index])
+    if (this.slime[index]) this.drawTile(x, y, this.slime[index])
+    if (this.plant[index]) this.drawTile(x, y, this.plant[index])
 };
 
 Island.prototype.adjustCoordinates = function(x, y){
@@ -135,15 +142,12 @@ Island.prototype.harvest = function(x, y, player) {
 Island.prototype.draw = function(){
     ctx.save()
 
-    // draw land
+    // draw land/slime/plants
     for (let x = 0; x < this.params.islandWidth; x++){
         for (let y = 0; y < this.params.islandHeight; y++){
-            this.drawLand(x, y);
+            this.drawSquare(x, y);
         }
     }
-
-    // TODO draw slime
-    // TODO draw plants
     
     // draw artifacts
 
