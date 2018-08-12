@@ -53,7 +53,9 @@ SporesIndicator.prototype.draw = function(){
         ctx.textAlign = 'center'
         ctx.textBaseline = 'top'
         var sporeType = this.spores[i].type;
-        ctx.fillText(`${lab.game.focus.player.spores[sporeType]}`,this.x + currentX, this.y + currentY + this.fontSize);
+        ctx.fillText(`${lab.game.focus.player.spores[sporeType]}`,
+            this.x + currentX,
+            this.y + currentY + this.fontSize - 4);
     }
 };
 
