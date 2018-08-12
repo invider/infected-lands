@@ -6,7 +6,7 @@ let Player = function(st) {
 
     };
     for (var k in dna.Spore.TYPE){
-        this.spores[dna.Spore.TYPE[k]] = 1;
+        this.spores[dna.Spore.TYPE[k]] = 10;
     }
 
     this.x = 2;

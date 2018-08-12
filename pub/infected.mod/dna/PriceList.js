@@ -88,13 +88,13 @@ PriceList.prototype.buy = function(){
     if (this.checkCanBuy()){
         var element = this._getTreeList()[this.selection];
         console.log(element);
-        let island = lab.game.getCurrentIsland()
+        let island = lab.game.getCurrentIsland();
         let player = lab.game.control.player;
         island.plantTree(player.x, player.y, dna.trees[element.name])
+        player.shopping = false;
         for (var sporeType in player.spores){
             return player.spores[sporeType] -= element[lib.sporesTools.sporeTypeNameFromType(sporeType)];
         }
-
     }
 
 };

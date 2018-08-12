@@ -44,7 +44,8 @@ Island.prototype.plantTree = function(x, y, cons) {
         island: this,
         index: index,
     })
-}
+    this.plant[index].planted();
+};
 
 Island.prototype.putSlime  = function(x, y, team) {
     this.slime[this.landIndex(x, y)] = new dna.Slime({
@@ -58,7 +59,7 @@ Island.prototype.removeSlime = function(x, y) {
 
 Island.prototype.removePlant = function(index) {
     this.plant[index] = false
-}
+};
 
 Island.prototype.evo = function(delta){
 };
@@ -67,7 +68,7 @@ Island.prototype.turn = function() {
     this.plant.forEach(p => {
         if (p && p.turn) p.turn()
     })
-}
+};
 
 Island.prototype.landIndex = function(x, y){
     return y * this.params.islandWidth + x
