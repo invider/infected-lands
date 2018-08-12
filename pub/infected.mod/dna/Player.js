@@ -71,6 +71,13 @@ Player.prototype.evo = function(dt) {
 }
 
 Player.prototype.draw = function() {
+    /** @type Island */
+    let island = lab.game.islandMap[this.islandId];
+    if (!island.isWalkable(this.x, this.y)){
+        var coords = island.adjustCoordinates(this.x, this.y);
+        this.x = coords.x;
+        this.y = coords.y;
+    }
     res.terrains.draw(230, 0, 0, 1, 1)
 
     ctx.beginPath()
