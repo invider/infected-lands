@@ -16,13 +16,23 @@ var Island = function(params){
     }
 
     for (let i = 0; i < 15; i++) {
-        this.drop(lib.math.rndi(dna.Spore.TYPES))
+        this.dropSpore(lib.math.rndi(dna.Spore.TYPES))
+    }
+
+    for (let i = 0; i < 4; i++) {
+        this.dropTree(dna.Tree)
     }
 };
 
-Island.prototype.drop = function(type) {
+Island.prototype.dropSpore = function(type) {
     let place = lib.math.rndi(this.params.islandWidth * this.params.islandHeight)
     this.plant[place] = new dna.Spore(type)
+}
+
+Island.prototype.dropTree = function(cons) {
+    console.dir(cons)
+    let place = lib.math.rndi(this.params.islandWidth * this.params.islandHeight)
+    this.plant[place] = new cons()
 }
 
 Island.prototype.evo = function(delta){
