@@ -43,6 +43,7 @@ Island.prototype.plantTree = function(x, y, cons) {
         island: this,
         index: index,
     })
+    debugger;
     this.plant[index].planted();
 };
 

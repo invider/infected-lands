@@ -3,14 +3,13 @@ let TeleporterTree = function(st) {
     this.ttl = env.tuning.treeTTL
     this.fillstyle = "#ccc";
 };
+sys.extend(TeleporterTree, dna.Tree);
 
 TeleporterTree.prototype.planted = function(){
     /** @type Player */
     let player = lab.game.control.player;
     player.targeting = true;
 };
-
-TeleporterTree.prototype = new dna.Tree()
 
 module.exports = TeleporterTree
 
