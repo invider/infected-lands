@@ -1,5 +1,5 @@
 let Player = function(st) {
-	this.SPEED = 10;
+	this.SPEED = env.tuning.actionPoints;
     this.targeting = 1;
     this.x = 2;
     this.y = 0;
