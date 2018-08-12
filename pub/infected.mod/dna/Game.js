@@ -92,6 +92,8 @@ Game.prototype.move = function(dir) {
     if (this.focus) {
         if (this.focus.player.targeting){
             lab.targetIsland.moveTarget(dir);
+        } else if (this.focus.player.shopping) {
+            lab.priceList.move(dir);
         } else {
             this.focus.player.move(dir)
         }

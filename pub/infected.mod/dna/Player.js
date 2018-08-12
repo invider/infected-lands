@@ -1,6 +1,7 @@
 let Player = function(st) {
 	this.SPEED = env.tuning.actionPoints;
     this.targeting = 0;
+    this.shopping = 0;
     this.spores = {
 
     };

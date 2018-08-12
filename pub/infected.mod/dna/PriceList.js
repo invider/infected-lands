@@ -13,6 +13,7 @@ var PriceList = function(init){
     this.treeStepY = 10;
     this.treeStepX = 40;
     this.fontSize = 30;
+    this.selection = 0;
     this.spores = {};
 };
 
@@ -44,7 +45,12 @@ PriceList.prototype.drawItem = function(item, x, y){
     ctx.restore()
 };
 
-PriceList.prototype.drawLine = function(tree){
+PriceList.prototype.drawLine = function(tree, selected){
+    if (selected){
+        ctx.strokeStyle = "#aa0000";
+        ctx.strokeRect(0, 0, this.width, this.treeScale + this.treeStepY);
+    }
+
     let treeObject = this._getTree(tree.name);
     let currentX = 10;
     this.drawItem(treeObject, currentX, 10);
@@ -55,15 +61,27 @@ PriceList.prototype.drawLine = function(tree){
         var sporeCount = tree[dna.Spore.TYPENAMES[type]];
 
         ctx.font = `${this.fontSize}px zekton`;
-        ctx.fillStyle = "#00c5ff"
-        ctx.textAlign = 'center'
-        ctx.textBaseline = 'top'
+        ctx.fillStyle = "#00c5ff";
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'top';
         ctx.fillText(`${sporeCount}`,currentX, 10 + this.fontSize);
 
         this.drawItem(sporeItem, currentX, 10)
     }
 };
-
+PriceList.prototype.move = function(dir){
+    switch(dir) {
+        case lib.consts.directions.UP: this.selection --; break;
+        case lib.consts.directions.DOWN: this.selection ++; break;
+    }
+    var list = this._getTreeList();
+    if (this.selection >= list.length){
+        this.selection = 0;
+    }
+    if (this.selection < 0){
+        this.selection = list.length - 1;
+    }
+};
 PriceList.prototype.draw = function(){
     let currentX = 0;
     let currentY = 0;
@@ -75,7 +93,7 @@ PriceList.prototype.draw = function(){
     for (let i = 0; i < list.length; i++){
         ctx.save();
         ctx.translate(this.x + currentX, this.y + currentY);
-        this.drawLine(list[i]);
+        this.drawLine(list[i], i === this.selection);
         ctx.restore();
         currentY += this.treeScale + this.treeStepY;
     }
