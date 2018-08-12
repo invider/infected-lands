@@ -90,9 +90,13 @@ Game.prototype.generateIsland = function () {
 
 Game.prototype.move = function(dir) {
     if (this.focus) {
-        this.focus.player.move(dir)
+        if (this.focus.player.targeting){
+            lab.targetIsland.moveTarget(dir);
+        } else {
+            this.focus.player.move(dir)
+        }
     }
-}
+};
 
 Game.prototype.showNextTurn = function() {
 	sys.spawn('text/fadeText', {

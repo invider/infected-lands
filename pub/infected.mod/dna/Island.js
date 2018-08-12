@@ -43,9 +43,33 @@ Island.prototype.isWalkable = function(x, y){
     return 0 <= x && x < this.params.islandWidth && 0 <= y && y < this.params.islandHeight
 };
 
+
+Island.prototype.isTargetable = function(x, y){
+    return 0 <= x && x < this.params.islandWidth && 0 <= y && y < this.params.islandHeight
+};
+
 Island.prototype.drawLand = function(x, y){
     let index = this.landIndex(x, y);
     this.drawTile(x, y, this.map[index])
+};
+
+Island.prototype.adjustCoordinates = function(x, y){
+    if (x >= this.params.islandWidth){
+        x = this.params.islandWidth - 1;
+    }
+    if (x < 0){
+        x = 0;
+    }
+    if (y >= this.params.islandHeight){
+        y = this.params.islandHeight - 1;
+    }
+    if (y < 0){
+        y = 0;
+    }
+    return {
+        x:x,
+        y:y
+    }
 };
 
 Island.prototype.draw = function(){

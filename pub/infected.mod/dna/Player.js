@@ -1,14 +1,14 @@
 let Player = function(st) {
-	this.SPEED = 10
+	this.SPEED = 10;
+    this.targeting = 1;
+    this.x = 2;
+    this.y = 0;
+    this.island = 0;
+	this.actionPoints = this.SPEED;
 
-    this.x = 2
-    this.y = 0
-    this.island = 0
-	this.actionPoints = this.SPEED
+    sys.augment(this, st);
 
-    sys.augment(this, st)
-
-    this.y += this.team
+    this.y += this.team;
 }
 
 Player.prototype.startTurn = function() {
