@@ -1,8 +1,8 @@
 module.exports = {
-    islands: 5,
-    players: 4,
-    computers: 2,
-    actionPoints: 30,
+    islands: 10,
+    players: 8,
+    computers: 4,
+    actionPoints: 15,
 
     treeTTL: 100,
 
@@ -11,19 +11,35 @@ module.exports = {
     team: [
         {
             name: 'Red',
-            color: '#ff0000',
+            color: '#FF4136',
         },
         {
             name: 'Green',
-            color: '#40ff00',
+            color: '#01FF70',
         },
         {
             name: 'Blue',
-            color: '#3010ff',
+            color: '#0074D9',
         },
         {
-            name: 'Gray',
-            color: '#d0d0d0',
+            name: 'Gold',
+            color: '#FFDC00',
+        },
+        {
+            name: 'Orange',
+            color: '#FF851B',
+        },
+        {
+            name: 'Sky',
+            color: '#87CEEB',
+        },
+        {
+            name: 'Magenta',
+            color: '#FF00FF',
+        },
+        {
+            name: 'Silver',
+            color: '#DDDDDD',
         },
     ],
 }

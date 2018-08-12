@@ -1,4 +1,5 @@
 module.exports = {
+    Z: 1000,
     draw: function() {
         ctx.fillStyle = '#80F000'
         ctx.textAlign = 'left'
