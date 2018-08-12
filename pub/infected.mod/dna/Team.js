@@ -4,7 +4,7 @@ let Team = function(st) {
     sys.spawn('Player', {
         name: 'player',
         team: this.id,
-        island: this.startIsland,
+        islandId: this.startIsland,
     }, this)
 }
 

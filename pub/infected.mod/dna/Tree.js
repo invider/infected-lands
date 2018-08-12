@@ -1,4 +1,5 @@
 let Tree = function() {
+    this.solid = true
 }
 
 Tree.prototype.draw = function() {

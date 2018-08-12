@@ -1,9 +1,9 @@
 let Player = function(st) {
 	this.SPEED = env.tuning.actionPoints;
-    this.targeting = 1;
+    this.targeting = 0;
     this.x = 2;
     this.y = 0;
-    this.island = 0;
+    this.islandId = 0;
 	this.actionPoints = this.SPEED;
 
     sys.augment(this, st);
@@ -26,11 +26,16 @@ Player.prototype.move = function(dir) {
     }
 
     // check the posibility to move
-    let walkable = lab.game.islandMap[this.island].isWalkable(tx, ty)
+    let island = lab.game.islandMap[this.islandId]
+    let walkable = island.isWalkable(tx, ty)
     if (walkable) {
         this.x = tx
         this.y = ty
         this.actionPoints--
+
+        // try to harvest
+        island.harvest(tx, ty)
+
         if (this.actionPoints <= 0) {
             lab.game.endTurn()
         }

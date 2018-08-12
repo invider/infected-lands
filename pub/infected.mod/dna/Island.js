@@ -61,7 +61,12 @@ Island.prototype.drawTile = function(x, y, e) {
 };
 
 Island.prototype.isWalkable = function(x, y){
-    return 0 <= x && x < this.params.islandWidth && 0 <= y && y < this.params.islandHeight
+    let walkable = 0 <= x && x < this.params.islandWidth && 0 <= y && y < this.params.islandHeight
+    if (walkable) {
+        let plant = this.plant[this.landIndex(x, y)]
+        if (plant && plant.solid) return false
+    }
+    return walkable
 };
 
 
@@ -116,7 +121,7 @@ Island.prototype.draw = function(){
     // draw players
     let island = this
     lab.game.team.forEach(function (t) {
-        if (t.player.island === island.id) {
+        if (t.player.islandId === island.id) {
             island.drawTile(t.player.x, t.player.y, t.player)
         }
     })
