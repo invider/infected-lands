@@ -5,6 +5,7 @@
  * @extends {Entity}
  */
 var IslandsList = function(init){
+    this.Z = 5
     this.fontSize = 30;
     this.scale = 0.3;
     this.islandsStep = 10;

@@ -25,6 +25,7 @@ IslandMonitor.prototype.draw = function(){
     ctx.font = `${this.fontSize}px Arial`;
     ctx.fillStyle = "#00c5ff"
     ctx.textAlign = 'left'
+    ctx.textBaseline = 'bottom'
     ctx.fillText(`Island: ${island.params.name} (${island.params.islandWidth}X${island.params.islandHeight})`,this.x, this.y + this.fontSize);
 
     ctx.translate(this.x, this.y + this.islandOffset);

@@ -62,17 +62,17 @@ module.exports = function() {
 
     sys.spawn('monitors/EnemyIslandMonitor', {
         name: 'targetIsland',
-        //Z: 1000,
-        x: 0,
-        y: 0,
+        Z: 20,
+        x: 100,
+        y: 100,
         width: 600,
         height:400
     }, '');
     sys.spawn('monitors/MyIslandMonitor', {
         name: 'myIsland',
-        //Z: 1000,
-        x: 0,
-        y: 450,
+        Z: 20,
+        x: 100,
+        y: ctx.height/2,
         width: 600,
         height:400
     }, '');
@@ -80,25 +80,24 @@ module.exports = function() {
 
     sys.spawn('IslandsList', {
         name: 'islandsList',
-        //Z: 1000,
-        x: 650,
-        y: 0,
+        x: 10,
+        y: 50,
         width: 60,
-        height:400
+        height: ctx.height-100,
     }, '');
 
     sys.spawn('SporesIndicator', {
         name: 'sporesIndicator',
-        //Z: 1000,
-        x: 950,
-        y: 70,
+        Z: 10,
+        x: ctx.width/2-200,
+        y: ctx.height-100,
         width: 400,
         height: 60
     }, '');
 
     sys.spawn('PriceList', {
         name: 'priceList',
-        //Z: 1000,
+        Z: 10,
         x: 950,
         y: 170,
         width: 400,
