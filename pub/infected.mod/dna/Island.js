@@ -26,7 +26,7 @@ var Island = function(params){
 
 Island.prototype.dropSpore = function(type) {
     let place = lib.math.rndi(this.params.islandWidth * this.params.islandHeight)
-    this.plant[place] = new dna.Spore(type)
+    this.plant[place] = new dna.Spore(type, this, place)
 }
 
 Island.prototype.dropTree = function(cons) {
@@ -35,8 +35,18 @@ Island.prototype.dropTree = function(cons) {
     this.plant[place] = new cons()
 }
 
+Island.prototype.removePlant = function(index) {
+    this.plant[index] = false
+}
+
 Island.prototype.evo = function(delta){
 };
+
+Island.prototype.turn = function() {
+    this.plant.forEach(p => {
+        if (p && p.turn) p.turn()
+    })
+}
 
 Island.prototype.landIndex = function(x, y){
     return y * this.params.islandWidth + x

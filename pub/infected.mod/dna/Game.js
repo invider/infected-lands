@@ -98,22 +98,6 @@ Game.prototype.move = function(dir) {
     }
 };
 
-Game.prototype.showNextTurn = function() {
-	sys.spawn('text/fadeText', {
-		font: '32px zekton',
-		fillStyle: env.tuning.turnLabelColor,
-		x: ctx.width * 0.8,
-		y: ctx.height * 0.5,
-		align: 'center',
-		text: 'Turn ' + this.turn,
-		dx: 0,
-		dy: -100,
-		ttl: 3,
-		tti: 1,
-		ttf: 1,
-	})
-}
-
 Game.prototype.showPlayerTurn = function() {
 	sys.spawn('text/fadeText', {
 		font: '32px zekton',
@@ -130,12 +114,35 @@ Game.prototype.showPlayerTurn = function() {
 	})
 }
 
+Game.prototype.showNextTurn = function() {
+	sys.spawn('text/fadeText', {
+		font: '32px zekton',
+		fillStyle: env.tuning.turnLabelColor,
+		x: ctx.width * 0.8,
+		y: ctx.height * 0.5,
+		align: 'center',
+		text: 'Turn ' + this.turn,
+		dx: 0,
+		dy: -100,
+		ttl: 3,
+		tti: 1,
+		ttf: 1,
+	})
+}
+
+Game.prototype.nextTurn = function() {
+    this.turn++
+    this.showNextTurn()
+
+    // notify
+    this.islandMap.forEach(isl => isl.turn())
+}
+
 Game.prototype.endTurn = function() {
     let nextPlayer = this.control.id + 1
     if (nextPlayer >= this.teams) {
-        this.turn++
-		this.showNextTurn()
         nextPlayer = 0
+        this.nextTurn()
     }
     this.focus = this.team[nextPlayer]
     this.control = this.team[nextPlayer]

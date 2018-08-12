@@ -1,6 +1,9 @@
-let Spore = function(type) {
+let Spore = function(type, island, index) {
     this.harvestable = true
     this.type = type
+    this.island = island
+    this.index = index
+    this.ttl = 5 + lib.math.rndi(10)
 }
 
 Spore.TYPE = {
@@ -9,6 +12,18 @@ Spore.TYPE = {
     BLUE: 2
 }
 Spore.TYPES = 3
+
+Spore.prototype.turn = function() {
+    this.ttl--
+    if (this.ttl <= 0) {
+        this.kill()
+        // TODO - maybe add a week instead of a kille spore?
+    }
+}
+
+Spore.prototype.kill = function() {
+    this.island.removePlant(this.index)
+}
 
 Spore.prototype.draw = function() {
 
