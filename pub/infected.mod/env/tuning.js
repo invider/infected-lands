@@ -17,7 +17,7 @@ module.exports = {
         },
         {
             name: 'Green',
-            color: '#01FF70',
+            color: '#01CC50',
         },
         {
             name: 'Blue',
@@ -25,15 +25,15 @@ module.exports = {
         },
         {
             name: 'Gold',
-            color: '#FFDC00',
+            color: '#FFEC20',
         },
         {
             name: 'Orange',
-            color: '#FF851B',
+            color: '#F07510',
         },
         {
-            name: 'Sky',
-            color: '#87CEEB',
+            name: 'Maroon',
+            color: '#85144b',
         },
         {
             name: 'Magenta',
