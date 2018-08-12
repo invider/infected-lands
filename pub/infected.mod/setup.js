@@ -83,8 +83,17 @@ module.exports = function() {
         //Z: 1000,
         x: 650,
         y: 0,
-        width: 600,
+        width: 60,
         height:400
+    }, '');
+
+    sys.spawn('SporesIndicator', {
+        name: 'sporesIndicator',
+        //Z: 1000,
+        x: 950,
+        y: 70,
+        width: 400,
+        height: 60
     }, '');
 
     // show the story

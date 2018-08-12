@@ -1,4 +1,5 @@
 let Spore = function(type) {
+    this.harvestable = true
     this.type = type
 }
 

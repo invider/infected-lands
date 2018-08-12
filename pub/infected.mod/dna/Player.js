@@ -1,6 +1,13 @@
 let Player = function(st) {
 	this.SPEED = env.tuning.actionPoints;
     this.targeting = 0;
+    this.spores = {
+
+    };
+    for (var k in dna.Spore.TYPE){
+        this.spores[dna.Spore.TYPE[k]] = 1;
+    }
+
     this.x = 2;
     this.y = 0;
     this.islandId = 0;
@@ -34,7 +41,7 @@ Player.prototype.move = function(dir) {
         this.actionPoints--
 
         // try to harvest
-        island.harvest(tx, ty)
+        island.harvest(tx, ty, this)
 
         if (this.actionPoints <= 0) {
             lab.game.endTurn()
@@ -42,6 +49,11 @@ Player.prototype.move = function(dir) {
     } else {
         // TODO play denied sfx
     }
+}
+
+Player.prototype.addSpore = function(type) {
+    // TODO harvest sfx if on main or target screen
+    this.spores[type]++
 }
 
 Player.prototype.evo = function(dt) {

@@ -103,6 +103,15 @@ Island.prototype.adjustCoordinates = function(x, y){
     }
 };
 
+Island.prototype.harvest = function(x, y, player) {
+    let ix = this.landIndex(x, y)
+    let plant = this.plant[ix]
+    if (plant && plant.harvestable) {
+        player.addSpore(plant.type)
+        this.plant[ix] = false
+    }
+}
+
 Island.prototype.draw = function(){
     ctx.save()
 
