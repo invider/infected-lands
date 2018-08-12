@@ -32,7 +32,7 @@ IslandsList.prototype.draw = function(){
 
     for (let i = 0; i < lab.game.islands; i++){
         var island = lab.game.getIslandByIndex(i);
-        var islandSizes = island.getScreenWidth();
+        var islandSizes = island.getScreenSize();
         var offset = lib.geometry.getOffsetToCenterInner(this.islandSize, this.islandSize, islandSizes.x * this.scale, islandSizes.y * this.scale);
 
         ctx.save();

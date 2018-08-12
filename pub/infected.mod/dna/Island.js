@@ -21,9 +21,13 @@ Island.prototype.landIndex = function(x, y){
     return y * this.params.islandWidth + x
 };
 
-Island.prototype.getScreenWidth = function(){
-    return {x: this.landTileSize * this.params.islandWidth, y: this.landTileSize * this.params.islandHeight}
+Island.prototype.getScreenSize = function(x, y){
+    x = (x === undefined ? this.params.islandWidth: x);
+    y = (y === undefined ? this.params.islandHeight: y);
+    return {x: this.landTileSize * x, y: this.landTileSize * y}
 };
+
+
 
 Island.prototype.drawTile = function(x, y, e) {
     ctx.save();

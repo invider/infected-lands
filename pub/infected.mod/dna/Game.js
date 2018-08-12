@@ -29,7 +29,7 @@ Game.prototype.getIslandsMaxSizes = function(){
         y: 0
     };
     this.islandMap.forEach(o => {
-        let size = o.getScreenWidth();
+        let size = o.getScreenSize();
         res.x = Math.max(res.x, size.x);
         res.y = Math.max(res.y, size.y);
     })

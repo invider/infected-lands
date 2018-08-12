@@ -118,6 +118,8 @@ module.exports = {
     extend: function(child, parent){
         child.prototype = Object.create(parent.prototype);
         child.prototype.constructor = child;
+        child.prototype.__super__ = parent
+        child.prototype.__superProto__ = parent.prototype
     }
 }
 
