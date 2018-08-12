@@ -28,6 +28,11 @@ Game.prototype.getCurrentIsland = function() {
 }
 
 Game.prototype.spacePressed = function(){
+    if (!lab.game.focus.player.shopping) {
+        lib.sfx(res.sfx.list, 0.7)
+    } else {
+        lib.sfx(res.sfx.close, 0.7)
+    }
     lab.game.focus.player.shopping = !lab.game.focus.player.shopping;
 };
 

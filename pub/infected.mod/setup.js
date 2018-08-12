@@ -119,4 +119,5 @@ module.exports = function() {
         color: '#FFFF20',
     })
 
+    env.sfxVolume = 0.7
 }

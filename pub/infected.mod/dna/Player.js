@@ -50,7 +50,7 @@ Player.prototype.move = function(dir) {
         }
     } else {
         // try to touch
-        island.touch(tx, ty, this)
+        let touched = island.touch(tx, ty, this)
 
         // TODO play denied sfx
     }
@@ -59,6 +59,7 @@ Player.prototype.move = function(dir) {
 Player.prototype.addSpore = function(type) {
     // TODO harvest sfx if on main or target screen
     this.spores[type]++
+    lib.sfx(res.sfx.pickup, 0.5)
 }
 
 Player.prototype.slime = function() {

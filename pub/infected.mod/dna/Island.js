@@ -66,7 +66,11 @@ Island.prototype.removePlant = function(index) {
 
 Island.prototype.touch = function(x, y, subject) {
     let plant = this.plant[this.landIndex(x, y)]
-    if (plant && plant.touch) plant.touch(subject)
+    if (plant && plant.touch) {
+        plant.touch(subject)
+        return true
+    }
+    return false
 };
 
 Island.prototype.evo = function(delta){

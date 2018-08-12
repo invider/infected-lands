@@ -93,8 +93,11 @@ PriceList.prototype.buy = function(){
         island.plantTree(player.x, player.y, dna.trees[element.name])
         player.shopping = false;
         for (var sporeType in player.spores){
-            return player.spores[sporeType] -= element[lib.sporesTools.sporeTypeNameFromType(sporeType)];
+            player.spores[sporeType] -= element[lib.sporesTools.sporeTypeNameFromType(sporeType)];
         }
+        lib.sfx(res.sfx.plant, 0.7)
+    } else {
+        lib.sfx(res.sfx.denied, 0.8)
     }
 
 };
@@ -111,6 +114,7 @@ PriceList.prototype.move = function(dir){
     if (this.selection < 0){
         this.selection = list.length - 1;
     }
+    lib.sfx(res.sfx.select, 0.7)
 };
 PriceList.prototype.draw = function(){
     if (!lab.game.focus.player.shopping ){

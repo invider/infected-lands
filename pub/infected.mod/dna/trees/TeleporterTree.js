@@ -18,10 +18,12 @@ TeleporterTree.prototype.targeted = function(island, target){
 };
 
 TeleporterTree.prototype.touch = function(subject) {
+    // teleport
     subject.islandId = this.targetTree.island.id
     subject.x = this.targetTree.x
     subject.y = this.targetTree.y
     lab.game.switchIslands()
+    lib.sfx(res.sfx.teleport, 0.5)
 }
 
 module.exports = TeleporterTree

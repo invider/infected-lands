@@ -16,6 +16,7 @@ TeleporterBackTree.prototype.touch = function(subject) {
     subject.x = this.targetTree.x
     subject.y = this.targetTree.y
     lab.game.switchIslands()
+    lib.sfx(res.sfx.teleport, 0.5)
 }
 
 module.exports = TeleporterBackTree
