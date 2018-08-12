@@ -43,11 +43,12 @@ Island.prototype.plantTree = function(x, y, cons) {
         island: this,
         index: index,
     })
-}
+    this.plant[index].planted();
+};
 
 Island.prototype.removePlant = function(index) {
     this.plant[index] = false
-}
+};
 
 Island.prototype.evo = function(delta){
 };
@@ -56,7 +57,7 @@ Island.prototype.turn = function() {
     this.plant.forEach(p => {
         if (p && p.turn) p.turn()
     })
-}
+};
 
 Island.prototype.landIndex = function(x, y){
     return y * this.params.islandWidth + x

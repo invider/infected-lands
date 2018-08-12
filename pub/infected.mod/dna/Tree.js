@@ -16,7 +16,11 @@ Tree.prototype.evo = function(dt) {
 Tree.prototype.draw = function() {
     ctx.fillStyle = this.fillstyle;
     ctx.fillRect(0.25, 0.25, 0.5, 0.5)
-}
+};
+
+Tree.prototype.planted = function(){
+
+};
 
 Tree.prototype.kill = function() {
     this.island.removePlant(this.index)
