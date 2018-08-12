@@ -34,6 +34,10 @@ Game.prototype.spacePressed = function(){
 Game.prototype.enterPressed = function(){
     if (lab.game.focus.player.shopping){
         lab.priceList.buy();
+    } else if (lab.game.focus.player.targeting){
+        lab.game.focus.player.targeting = false;
+        var island = this.getIslandByIndex(lab.targetIsland.currentIsland);
+        lab.game.focus.player.targetListener.targeted(island, lab.targetIsland.target);
     } else {
         this.endTurn();
     }
