@@ -4,8 +4,6 @@ var EnemyIslandMonitor = function(init){
         y:0,
         type: 1
     };
-
-    this.showTarget = true;
     dna.IslandMonitor.call(this, init);
 };
 sys.extend(EnemyIslandMonitor, dna.IslandMonitor);
@@ -38,7 +36,8 @@ EnemyIslandMonitor.prototype.refocus = function() {
 };
 
 EnemyIslandMonitor.prototype._showTarget = function(){
-    if (this.showTarget){
+    let player = lab.game.control.player;
+    if (player.targeting){
         return this.target;
     }
     return false;
