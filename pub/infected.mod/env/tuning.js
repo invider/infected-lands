@@ -4,6 +4,8 @@ module.exports = {
     computers: 2,
     actionPoints: 30,
 
+    treeTTL: 100,
+
 	turnLabelColor: '#dfff20',
 
     team: [

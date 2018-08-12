@@ -1,12 +1,13 @@
-let Tree = function(island, index) {
+let Tree = function(st) {
     this.solid = true
-    this.island = island
-    this.index = index
-    this.ttl = 100
+    this.ttl = -1
+
+    sys.augment(this, st)
 }
 
 Tree.prototype.turn = function() {
     this.ttl--
+    if (this.ttl === 0) this.kill()
 }
 
 Tree.prototype.evo = function(dt) {
