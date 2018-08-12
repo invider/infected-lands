@@ -8,7 +8,7 @@ var SporesIndicator = function(init){
     this.horizontal = true;
     this.x = 0;
     this.y = 0;
-    this.fontSize = 32;
+    this.fontSize = 22;
     this.sporeScale = 64
     this.sporesStep = 64
     this.spores = [];
@@ -45,15 +45,15 @@ SporesIndicator.prototype.draw = function(){
         ctx.translate(this.x + currentX, this.y + currentY);
         ctx.scale(this.sporeScale, this.sporeScale);
 
-        ctx.font = `${this.fontSize}px Arial`;
-        ctx.fillStyle = "#00c5ff"
-        ctx.textAlign = 'left'
-
         this.spores[i].draw();
         ctx.restore();
 
+        ctx.font = `${this.fontSize}px zekton`;
+        ctx.fillStyle = "#00c5ff"
+        ctx.textAlign = 'center'
+        ctx.textBaseline = 'top'
         var sporeType = this.spores[i].type;
-        ctx.fillText(`X: ${lab.game.focus.player.spores[sporeType]}`,this.x + currentX, this.y + currentY + this.fontSize);
+        ctx.fillText(`${lab.game.focus.player.spores[sporeType]}`,this.x + currentX, this.y + currentY + this.fontSize);
     }
 };
 

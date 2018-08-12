@@ -1,4 +1,5 @@
 module.exports = {
+
     islands: 10,
     players: 8,
     computers: 4,
@@ -6,6 +7,7 @@ module.exports = {
 
     treeTTL: 100,
 
+    font: 'zekton',
 	turnLabelColor: '#dfff20',
 
     team: [

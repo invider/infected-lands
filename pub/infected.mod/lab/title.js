@@ -3,7 +3,7 @@ module.exports = {
     draw: function() {
         ctx.textAlign = 'center'
         ctx.textBaseline = 'bottom'
-        ctx.font = '24px zekton'
+        ctx.font = '24px ' + env.tuning.font
 
         ctx.fillStyle = env.tuning.team[lab.game.control.id].color
         let text = env.tuning.team[lab.game.control.id].name + ' Player Turn'

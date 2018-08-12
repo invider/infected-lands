@@ -22,7 +22,7 @@ IslandMonitor.prototype.draw = function(){
     ctx.stroke();
     */
 
-    ctx.font = `${this.fontSize}px Arial`;
+    ctx.font = `${this.fontSize}px ${env.tuning.font}`;
     ctx.fillStyle = "#00c5ff"
     ctx.textAlign = 'left'
     ctx.textBaseline = 'bottom'
