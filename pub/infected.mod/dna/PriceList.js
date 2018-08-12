@@ -47,13 +47,18 @@ PriceList.prototype.drawItem = function(item, x, y){
 
 PriceList.prototype.drawLine = function(tree, selected){
     if (selected){
-        ctx.strokeStyle = "#aa0000";
+        if (this.checkCanBuy()){
+            ctx.strokeStyle = "#0000FF";
+        } else {
+            ctx.strokeStyle = "#aa0000";
+        }
         ctx.strokeRect(0, 0, this.width, this.treeScale + this.treeStepY);
     }
 
     let treeObject = this._getTree(tree.name);
     let currentX = 10;
     this.drawItem(treeObject, currentX, 10);
+
     for (var typeName in dna.Spore.TYPE){
         currentX += this.treeStepX + this.treeScale;
         var type = dna.Spore.TYPE[typeName];
@@ -69,13 +74,29 @@ PriceList.prototype.drawLine = function(tree, selected){
         this.drawItem(sporeItem, currentX, 10)
     }
 };
-
-PriceList.prototype.buy = function(){
+PriceList.prototype.checkCanBuy = function(){
     var element = this._getTreeList()[this.selection];
-    console.log(element);
-    let island = lab.game.getCurrentIsland()
-    let player = lab.game.control.player
-    island.plantTree(player.x, player.y, dna.trees[element.name])
+    let player = lab.game.control.player;
+    for (var sporeType in player.spores){
+            if (player.spores[sporeType] < element[lib.sporesTools.sporeTypeNameFromType(sporeType)]){
+                return false
+            }
+    }
+    return true;
+};
+PriceList.prototype.buy = function(){
+    if (this.checkCanBuy()){
+        var element = this._getTreeList()[this.selection];
+        console.log(element);
+        let island = lab.game.getCurrentIsland()
+        let player = lab.game.control.player;
+        island.plantTree(player.x, player.y, dna.trees[element.name])
+        for (var sporeType in player.spores){
+            return player.spores[sporeType] -= element[lib.sporesTools.sporeTypeNameFromType(sporeType)];
+        }
+
+    }
+
 };
 
 PriceList.prototype.move = function(dir){
