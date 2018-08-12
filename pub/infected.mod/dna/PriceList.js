@@ -124,11 +124,13 @@ PriceList.prototype.draw = function(){
 
     var list = this._getTreeList();
     for (let i = 0; i < list.length; i++){
-        ctx.save();
-        ctx.translate(this.x + currentX, this.y + currentY);
-        this.drawLine(list[i], i === this.selection);
-        ctx.restore();
-        currentY += this.treeScale + this.treeStepY;
+        if (list[i].canBuy){
+            ctx.save();
+            ctx.translate(this.x + currentX, this.y + currentY);
+            this.drawLine(list[i], i === this.selection);
+            ctx.restore();
+            currentY += this.treeScale + this.treeStepY;
+        }
     }
 };
 
