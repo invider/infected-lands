@@ -96,6 +96,15 @@ module.exports = function() {
         height: 60
     }, '');
 
+    sys.spawn('PriceList', {
+        name: 'priceList',
+        //Z: 1000,
+        x: 950,
+        y: 170,
+        width: 400,
+        height: 600
+    }, '');
+
     // show the story
     sys.spawn('text/scroll', {
         Z: 100,

@@ -55,21 +55,6 @@ SporesIndicator.prototype.draw = function(){
         var sporeType = this.spores[i].type;
         ctx.fillText(`X: ${lab.game.focus.player.spores[sporeType]}`,this.x + currentX, this.y + currentY + this.fontSize);
     }
-
-
-
-    // for (let i = 0; i < lab.player.spores; i++){
-    //     ctx.save();
-    //     ctx.translate(this.x + currentX, this.y + currentY);
-    //     ctx.scale(this.scale, this.scale);
-    //     ctx.restore();
-    //
-    //     if (this.horizontal){
-    //         currentX += this.islandsStep + this.islandSize;
-    //     } else {
-    //         currentY += this.islandsStep + this.islandSize;
-    //     }
-    // }
 };
 
 module.exports = SporesIndicator;
