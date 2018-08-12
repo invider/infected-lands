@@ -2,10 +2,13 @@ let Player = function(st) {
 	this.SPEED = env.tuning.actionPoints;
     this.targeting = 1;
     this.spores = {
-        red: 0,
-        green: 0,
-        blue: 0
+
     };
+    for (var k in dna.Spore.TYPE){
+        this.spores[dna.Spore.TYPE[k]] = 1;
+    }
+
+
     this.x = 2;
     this.y = 0;
     this.island = 0;
