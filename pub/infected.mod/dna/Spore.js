@@ -10,6 +10,10 @@ Spore.TYPE = {
     RED: 0,
     GREEN: 1,
     BLUE: 2
+};
+Spore.TYPENAMES = {};
+for (var k in Spore.TYPE){
+    Spore.TYPENAMES[Spore.TYPE[k]] = k;
 }
 Spore.TYPES = 3
 
