@@ -23,7 +23,7 @@ TeleporterTree.prototype.touch = function(subject) {
     subject.x = this.targetTree.x
     subject.y = this.targetTree.y
     lab.game.switchCurrentIsland(subject.islandId)
-    lib.sfx(res.sfx.teleport, 0.5)
+    lib.sfx(res.sfx.hyperjump, 0.8)
 }
 
 TeleporterTree.prototype.draw = function() {

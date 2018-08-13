@@ -42,19 +42,21 @@ Player.prototype.move = function(dir) {
     if (walkable) {
         this.x = tx
         this.y = ty
-        this.actionPoints--
+        lib.sfx(res.sfx.step, 0.5)
 
         // try to harvest
         island.harvest(tx, ty, this)
 
-        if (this.actionPoints <= 0) {
-            lab.game.endTurn()
-        }
     } else {
         // try to touch
         let touched = island.touch(tx, ty, this)
 
-        // TODO play denied sfx
+        lib.sfx(res.sfx.hit, 0.5)
+    }
+
+    this.actionPoints--
+    if (this.actionPoints <= 0) {
+        lab.game.endTurn()
     }
 }
 
