@@ -1,5 +1,7 @@
+
+let INFECTION_DEEP = 32
+
 /**
- *
  * @param params
  * @constructor
  */
@@ -65,11 +67,12 @@ Island.prototype.dropTree = function(cons) {
     })
 }
 
-Island.prototype.plantTree = function(x, y, cons) {
+Island.prototype.plantTree = function(x, y, cons, team) {
     let index = this.landIndex(x, y)
     this.plant[index] = new cons({
         island: this,
         index: index,
+        team:  team,
         x: x,
         y: y,
     })
@@ -81,6 +84,28 @@ Island.prototype.putSlime  = function(x, y, team) {
     this.slime[this.landIndex(x, y)] = new dna.Slime({
         team: team,
     })
+}
+
+Island.prototype.infectLand = function(x, y, team) {
+    let slime = this.slime[this.landIndex(x, y)]
+    if (slime && slime.team === team) return false
+    this.putSlime(x, y, team)
+    return true
+}
+
+Island.prototype.infectAttempt = function(x, y, team, t) {
+    if (t > INFECTION_DEEP) return false
+    let sx = x + lib.math.rndi(3)-1
+    let sy = y + lib.math.rndi(3)-1
+    if (!this.inland(sx, sy)) {
+        return this.infectAttempt(x, y, team, t+1)
+    }
+    if (this.infectLand(sx, sy, team)) return true;
+    else return this.infectAttempt(sx, sy, team, t+1);
+}
+
+Island.prototype.infect = function(x, y, team) {
+    this.infectAttempt(x, y, team, 1)
 }
 
 Island.prototype.removeSlime = function(x, y) {
@@ -108,6 +133,13 @@ Island.prototype.turn = function() {
         if (p && p.turn) p.turn()
     })
 };
+
+Island.prototype.inland = function(x, y) {
+    if (y === undefined) {
+        return x >= 0 && x < this.params.islandWidth * this.params.islandHeight;
+    }
+    return x >= 0 && x <= this.params.islandWidth && y >= 0 && y < this.params.islandHeight
+}
 
 Island.prototype.landIndex = function(x, y){
     if (y === undefined){

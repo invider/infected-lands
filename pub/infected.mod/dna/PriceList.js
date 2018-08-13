@@ -90,7 +90,8 @@ PriceList.prototype.buy = function(){
         console.log(element);
         let island = lab.game.getCurrentIsland();
         let player = lab.game.control.player;
-        island.plantTree(player.x, player.y, dna.trees[element.name])
+        island.plantTree(player.x, player.y, dna.trees[element.name],
+            player.team)
         player.shopping = false;
         for (var sporeType in player.spores){
             player.spores[sporeType] -= element[lib.sporesTools.sporeTypeNameFromType(sporeType)];
