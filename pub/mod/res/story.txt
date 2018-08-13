@@ -1,3 +1,5 @@
-This is a story
-About those islands
-Check it out
+Harvest spores
+Plant various trees:
+    * some provide you with spores
+    * some attack another island
+    * some allow you to teleport

@@ -18,4 +18,6 @@ function generate(path) {
 
 generate(syspath)
 generate(basepath)
+generate(basepath + '/ext')
+generate(basepath + '/mod')
 

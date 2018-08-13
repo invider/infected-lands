@@ -16,7 +16,7 @@ module.exports = function(e) {
             case 'Comma': case 'KeyQ': lab.targetIsland.prevIsland(); break;
             case 'Period': case 'KeyE': lab.targetIsland.nextIsland(); break;
             case 'Enter': lab.game.enterPressed(); break;
-            case 'ShiftRight': lab.game.control.player.slime(); break;
+            //case 'ShiftRight': lab.game.control.player.slime(); break;
             }
         }
     }

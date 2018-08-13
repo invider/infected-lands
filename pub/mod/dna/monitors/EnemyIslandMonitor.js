@@ -16,6 +16,7 @@ EnemyIslandMonitor.prototype.nextIsland = function() {
     if (this.currentIsland === lab.myIsland.currentIsland) {
         this.nextIsland()
     }
+    lib.sfx(res.sfx.select, 0.5)
 };
 
 EnemyIslandMonitor.prototype.prevIsland = function() {
@@ -26,6 +27,7 @@ EnemyIslandMonitor.prototype.prevIsland = function() {
     if (this.currentIsland === lab.myIsland.currentIsland) {
         this.prevIsland()
     }
+    lib.sfx(res.sfx.select, 0.5)
 };
 
 EnemyIslandMonitor.prototype.refocus = function() {

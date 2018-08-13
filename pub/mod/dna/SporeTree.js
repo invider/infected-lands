@@ -13,7 +13,7 @@ SporeTree.prototype.turn = function(){
     this.turnCounter = this.turnCounter || 0
     this.turnCounter ++;
     if (this.turnCounter == this.spawnPeriod){
-        this.island.dropSporeInRadius(dna.Spore.TYPE.BLUE, this.x, this.y, this.dropRadius);
+        this.island.dropSporeInRadius(this.type, this.x, this.y, this.dropRadius);
         this.turnCounter = 0;
     }
 };

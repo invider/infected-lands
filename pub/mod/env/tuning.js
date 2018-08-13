@@ -1,6 +1,6 @@
 module.exports = {
 
-    islands: 10,
+    islands: 8,
     players: 4,
     computers: 2,
     actionPoints: 15,

@@ -9,7 +9,10 @@ module.exports = {
     evo: function(dt) {
         if (!this.visible) return
         this.blink -= dt
-        if (this.blink < 0) this.blink = BLINK*2
+        if (this.blink < 0) {
+            this.blink = BLINK*2
+            lib.sfx(res.sfx.wait, 0.8)
+        }
     },
     
     draw: function() {
@@ -36,10 +39,11 @@ module.exports = {
 
     show: function() {
         this.visible = true
-        this.blink = BLINK*2
+        this.blink = 0
     },
 
     hide: function() {
         this.visible = false
+        lib.sfx(res.sfx.ready, 0.8)
     },
 }
