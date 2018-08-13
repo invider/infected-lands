@@ -13,10 +13,10 @@ Ludum Dare 42 Entry
 - [ ] islands topology generation
 - [ ] simple AI
 - [ ] game selection screen (players, computers, map, difficulty)
-- [+] setup teams
-- [-] setup players
-- [+] player movements
-- [+] movement limitation
-- [+] next turn logic
-- [+] loading screen
+- [x] setup teams
+- [x] setup players
+- [x] player movements
+- [x] movement limitation
+- [x] next turn logic
+- [x] loading screen
 
