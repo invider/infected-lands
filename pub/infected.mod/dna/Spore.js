@@ -31,6 +31,15 @@ Spore.prototype.kill = function() {
 
 Spore.prototype.draw = function() {
 
+    let img = res['red-spore']
+    switch(this.type) {
+        case Spore.TYPE.RED: img = res['red-spore']; break;
+        case Spore.TYPE.GREEN: img = res['green-spore']; break;;
+        case Spore.TYPE.BLUE: img = res['blue-spore']; break;
+    }
+    ctx.imageSmoothingEnabled = false
+    ctx.drawImage(img, 0, 0, 1, 1)
+    /*
     switch(this.type) {
         case Spore.TYPE.RED: ctx.fillStyle = '#ff0000'; break;
         case Spore.TYPE.GREEN: ctx.fillStyle = '#40ff00'; break;
@@ -43,6 +52,8 @@ Spore.prototype.draw = function() {
     ctx.fill();
     ctx.lineWidth = 1/16;
     ctx.stroke();
+    */
+
 }
 
 module.exports = Spore

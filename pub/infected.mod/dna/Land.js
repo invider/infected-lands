@@ -17,10 +17,13 @@ Land.prototype.draw = function(){
     // draw dot
     // ctx.fillStyle="#FF0000";
     // ctx.fillRect(this.x, this.y, this.width, this.height);
+    /*
     res.terrains.draw(this.type,
         0,
         0,
         1, 1)
+    */
+    ctx.drawImage(res.land[0], 0, 0, 1, 1)
 };
 
 Land.types = {
