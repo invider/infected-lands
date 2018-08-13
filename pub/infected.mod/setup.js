@@ -63,18 +63,18 @@ module.exports = function() {
     sys.spawn('monitors/EnemyIslandMonitor', {
         name: 'targetIsland',
         Z: 20,
-        x: 100,
-        y: 100,
+        x: ctx.width/2 - 200,
+        y: 50,
         width: 600,
-        height:400
+        height:500
     }, '');
     sys.spawn('monitors/MyIslandMonitor', {
         name: 'myIsland',
         Z: 20,
-        x: 100,
+        x: ctx.width/2 - 200,
         y: ctx.height/2,
         width: 600,
-        height:400
+        height:500
     }, '');
     lab.targetIsland.nextIsland()
 
@@ -89,19 +89,19 @@ module.exports = function() {
     sys.spawn('SporesIndicator', {
         name: 'sporesIndicator',
         Z: 10,
-        x: ctx.width/2-200,
-        y: ctx.height-100,
-        width: 400,
-        height: 60
+        x: ctx.width-320,
+        y: ctx.height-80,
+        width: 300,
+        height: 60 
     }, '');
 
     sys.spawn('PriceList', {
         name: 'priceList',
         Z: 10,
-        x: 950,
-        y: 170,
-        width: 400,
-        height: 600
+        x: ctx.width - 320,
+        y: 50,
+        width: 300,
+        height: ctx.height - 150 
     }, '');
 
     // show the story

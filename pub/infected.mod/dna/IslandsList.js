@@ -21,9 +21,15 @@ IslandsList.prototype.calcScale = function(){
     return this.islandSize / max;
 };
 
-IslandsList.prototype.drawSelector = function (x, y) {
-    ctx.strokeStyle = "#ff0000";
+IslandsList.prototype.drawSelector = function (x, y, color) {
+    ctx.strokeStyle = color
+    ctx.lineWidth = 2
     ctx.strokeRect(x, y, this.islandSize, this.islandSize);
+};
+
+IslandsList.prototype.drawHighlighter = function (x, y, color) {
+    ctx.fillStyle = color
+    ctx.fillRect(x, y, this.islandSize, this.islandSize);
 };
 
 IslandsList.prototype.draw = function(){
@@ -43,15 +49,24 @@ IslandsList.prototype.draw = function(){
         var islandSizes = island.getScreenSize();
         var offset = lib.geometry.getOffsetToCenterInner(this.islandSize, this.islandSize, islandSizes.x * this.scale, islandSizes.y * this.scale);
 
+        if (i === lab.myIsland.currentIsland) {
+            this.drawHighlighter(this.x + currentX, this.y + currentY, "#503070")
+        } else if (i === lab.targetIsland.currentIsland) {
+            this.drawHighlighter(this.x + currentX, this.y + currentY, "#303030")
+        }
+
         ctx.save();
         ctx.translate(this.x + currentX + offset.x, this.y + currentY + offset.y);
         ctx.scale(this.scale, this.scale);
         island.draw();
         ctx.restore();
 
-        if (i == lab.targetIsland.currentIsland){
-            this.drawSelector(this.x + currentX, this.y + currentY);
+        if (i === lab.targetIsland.currentIsland){
+            this.drawSelector(this.x + currentX, this.y + currentY, '#ff0000');
+        } else if (i === lab.myIsland.currentIsland) {
+            this.drawSelector(this.x + currentX, this.y + currentY, '#ffff00');
         }
+
         if (this.horizontal){
             currentX += this.islandsStep + this.islandSize;
         } else {

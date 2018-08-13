@@ -8,5 +8,10 @@ let BlueSporeTree = function(st) {
 
 sys.extend(BlueSporeTree, dna.SporeTree);
 
+BlueSporeTree.prototype.draw = function() {
+    ctx.imageSmoothingEnabled = false
+    ctx.drawImage(res['blue-tree'], 0, 0, 1, 1)
+}
+
 module.exports = BlueSporeTree
 

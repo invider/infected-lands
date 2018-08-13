@@ -19,5 +19,10 @@ TeleporterBackTree.prototype.touch = function(subject) {
     lib.sfx(res.sfx.teleport, 0.5)
 }
 
+TeleporterBackTree.prototype.draw = function() {
+    ctx.imageSmoothingEnabled = false
+    ctx.drawImage(res['teleport-tree'], 0, 0, 1, 1)
+}
+
 module.exports = TeleporterBackTree
 

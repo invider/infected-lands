@@ -10,14 +10,16 @@ let Player = function(st) {
         this.spores[dna.Spore.TYPE[k]] = 10;
     }
 
-    this.x = 2;
+    this.x = 0;
     this.y = 0;
     this.islandId = 0;
 	this.actionPoints = this.SPEED;
 
     sys.augment(this, st);
 
+    this.x += this.team;
     this.y += this.team;
+    this.img = res[env.tuning.team[this.team].img]
 }
 
 Player.prototype.startTurn = function() {
@@ -78,8 +80,11 @@ Player.prototype.draw = function() {
         this.x = coords.x;
         this.y = coords.y;
     }
-    res.terrains.draw(230, 0, 0, 1, 1)
 
+    ctx.imageSmoothingEnabled = false
+    ctx.drawImage(this.img, 0, 0, 1, 1)
+
+    // color frame
     ctx.beginPath()
     ctx.strokeStyle = env.tuning.team[this.team].color
     ctx.lineWidth = 1/16

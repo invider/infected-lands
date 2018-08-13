@@ -38,21 +38,7 @@ Spore.prototype.draw = function() {
         case Spore.TYPE.BLUE: img = res['blue-spore']; break;
     }
     ctx.imageSmoothingEnabled = false
-    ctx.drawImage(img, 0, 0, 1, 1)
-    /*
-    switch(this.type) {
-        case Spore.TYPE.RED: ctx.fillStyle = '#ff0000'; break;
-        case Spore.TYPE.GREEN: ctx.fillStyle = '#40ff00'; break;
-        case Spore.TYPE.BLUE: ctx.fillStyle = '#4000ff'; break;
-    }
-    ctx.strokeStyle = '#404080'
-
-    ctx.beginPath()
-    ctx.arc(0.5, 0.5, 0.15, 0, 2*Math.PI, false)
-    ctx.fill();
-    ctx.lineWidth = 1/16;
-    ctx.stroke();
-    */
+    ctx.drawImage(img, 0.1, 0.1, 0.8, 0.8)
 
 }
 

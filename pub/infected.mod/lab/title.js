@@ -11,6 +11,6 @@ module.exports = {
 
         ctx.fillStyle = env.tuning.turnLabelColor
         text = 'Turn ' + lab.game.turn
-        ctx.fillText(text, ctx.width/6*5, 30)
+        ctx.fillText(text, ctx.width - 170, 30)
     }
 }

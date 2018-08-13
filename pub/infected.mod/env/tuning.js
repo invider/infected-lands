@@ -14,34 +14,22 @@ module.exports = {
         {
             name: 'Red',
             color: '#FF4136',
+            img: 'red-player',
         },
         {
             name: 'Green',
             color: '#01CC50',
+            img: 'green-player',
         },
         {
             name: 'Blue',
             color: '#0074D9',
+            img: 'blue-player',
         },
         {
             name: 'Silver',
             color: '#DDDDDD',
-        },
-        {
-            name: 'Gold',
-            color: '#FFEC20',
-        },
-        {
-            name: 'Orange',
-            color: '#F07510',
-        },
-        {
-            name: 'Maroon',
-            color: '#85144b',
-        },
-        {
-            name: 'Magenta',
-            color: '#FF00FF',
+            img: 'silver-player',
         },
     ],
 }

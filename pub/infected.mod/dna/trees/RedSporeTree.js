@@ -6,5 +6,10 @@ let RedSporeTree = function(st) {
 }
 sys.extend(RedSporeTree, dna.SporeTree);
 
+RedSporeTree.prototype.draw = function() {
+    ctx.imageSmoothingEnabled = false
+    ctx.drawImage(res['red-tree'], 0, 0, 1, 1)
+}
+
 module.exports = RedSporeTree
 

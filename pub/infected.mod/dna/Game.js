@@ -131,7 +131,7 @@ Game.prototype.showPlayerTurn = function() {
 		font: '32px zekton',
 		fillStyle: env.tuning.team[this.control.id].color,
 		x: ctx.width * 0.7,
-		y: ctx.height * 0.5,
+		y: ctx.height * 0.5 - 40,
 		align: 'center',
 		text: env.tuning.team[this.control.id].name + ' Player Turn',
 		dx: -200,

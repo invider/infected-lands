@@ -8,11 +8,11 @@ var PriceList = function(init){
     this.horizontal = false;
     //  copyying parameters from init to this
     sys.augment(this, init);
-    this.treeScale = 64;
+    this.treeScale = 45;
     this.treeCache = {};
-    this.treeStepY = 10;
-    this.treeStepX = 40;
-    this.fontSize = 30;
+    this.treeStepY = 20;
+    this.treeStepX = 30;
+    this.fontSize = 24;
     this.selection = 0;
     this.spores = {};
 };
@@ -69,7 +69,7 @@ PriceList.prototype.drawLine = function(tree, selected){
         ctx.fillStyle = "#00c5ff";
         ctx.textAlign = 'center';
         ctx.textBaseline = 'top';
-        ctx.fillText(`${sporeCount}`,currentX, 10 + this.fontSize);
+        ctx.fillText(`${sporeCount}`,currentX-8, this.fontSize-8);
 
         this.drawItem(sporeItem, currentX, 10)
     }
