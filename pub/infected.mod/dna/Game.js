@@ -172,6 +172,12 @@ Game.prototype.nextTurn = function() {
     this.islandMap.forEach(isl => isl.turn())
 }
 
+Game.prototype.nextPlayerTurn = function() {
+    lab.banner.hide()
+    this.showPlayerTurn()
+    this.wait = false
+}
+
 Game.prototype.endTurn = function() {
     let nextPlayer = this.control.id + 1
     if (nextPlayer >= this.teams) {
@@ -183,7 +189,8 @@ Game.prototype.endTurn = function() {
 	this.control.player.startTurn()
     lab.myIsland.focus()
     lab.targetIsland.refocus()
-    this.showPlayerTurn()
+    this.wait = true
+    lab.banner.show()
 }
 
 module.exports = Game;

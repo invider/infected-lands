@@ -40,12 +40,14 @@ module.exports = function() {
     //     framerate: 9,
     // }, 'camera')
 
+    /*
     sys.spawn('Grid', {
         color: '#ff7080',
         top: 2000,
         step: 100,
         coordinates: false,
     }, '')
+    */
 
     //
     // sys.spawn('Island', {
